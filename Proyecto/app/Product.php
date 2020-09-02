@@ -1,7 +1,7 @@
 <?php
 
 namespace App;
-
+use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
@@ -48,4 +48,11 @@ class Product extends Model
         $this->attributes['description'] = $descrpition;
     }
 
+    public static function validate(Request $request){
+        $request->validate([
+            "name" => "required",
+            "price" => "required|numeric|gt:0",
+            "description" => "required"
+        ]);
+    }
 }

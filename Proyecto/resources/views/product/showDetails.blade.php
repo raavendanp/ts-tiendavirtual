@@ -35,7 +35,7 @@
 					<li><a href="#">All Categories</a></li>
 					<li><a href="#">Accessories</a></li>
 					<li><a href="#">Headphones</a></li>
-					<li class="active">{{$data["product"]["name"]}}</li>
+					<li class="active">{{$data["product"][0]->getName()}}</li>
 				</ul>
 			</div>
 		</div>
@@ -142,9 +142,10 @@
 						</div>
 						<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
 						<div class="delete">
-							<form method="POST" style ="margin-left:30%;margin-top:1%" action="{{ route('product.delete') }}">
+							<form action="{{ route('product.delete') }}" method="POST" style ="margin-left:30%;margin-top:1%" >
 								@csrf
 								<input type='hidden' name='id' value='{{$data["product"]["id"]}}' />
+								<input type='hidden' name='_method' value='DELETE'/>
 								<button class= "add-to-cart-btn" style = "width: 165.70px" type="submit" ><i class="fa fa-trash" aria-hidden="true"></i>delete</button>
 								
 							</form>

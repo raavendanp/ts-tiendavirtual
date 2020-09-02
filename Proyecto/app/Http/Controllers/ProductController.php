@@ -39,11 +39,7 @@ class ProductController extends Controller
 
     public function save(Request $request)
     {
-        $request->validate([
-            "name" => "required",
-            "price" => "required|numeric|gt:0",
-            "description" => "required"
-        ]);
+        Product::validate($request);
         Product::create($request->only(["name","price","description"]));
 
         return back()->with('success','Item created successfully!');
