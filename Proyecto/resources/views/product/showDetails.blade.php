@@ -2,9 +2,8 @@
 @section("title", "Show Product")
 @section('content')
 
-<!--if(isset($_GET["page"]))
-	<script>
-		
+@if(isset($_GET["page"]))
+	<script>	
 		$(document).ready(function() {
 			
 				$("body,html").animate(
@@ -14,11 +13,9 @@
 				0 //speed
 				);
 			
-			});
-					
-			
+			});	
 	</script>
-endif-->
+@endif
 
 
 <!-- NAVIGATION -->
@@ -28,16 +25,16 @@ endif-->
 		<!-- responsive-nav -->
 		<div id="responsive-nav">
 			<!-- NAV -->
-			
-   
+
+
 			<ul class="main-nav nav navbar-nav">
 				<li class="active"><a href="{{url('/index')}}">Home</a></li>
 				<li><a href="{{url('/product/create')}}">New Product</a></li>
 				<li><a href="{{url('/product/show')}}">See Products</a></li>
 				<li><a href="{{url('/contact')}}">Contact</a></li>
 			</ul>
-			
-		
+
+
 			<!-- /NAV -->
 		</div>
 		<!-- /responsive-nav -->
@@ -124,13 +121,17 @@ endif-->
 					<h2 class="product-name">{{$product->getName()}}</h2>
 					<div>
 						<div class="product-rating">
-							<i class="fa fa-star"></i>
-							<i class="fa fa-star"></i>
-							<i class="fa fa-star"></i>
-							<i class="fa fa-star"></i>
-							<i class="fa fa-star-o"></i>
+							@for($i = 1;$i<=5;$i++) 
+								@if($i-0.2 <=$product["avgRating"]) 
+									<i class="fa fa-star"></i>
+								@elseif($i-0.75 < $product["avgRating"]) 
+									<i class="fa fa-star-half-o"></i>
+								@else
+									<i class="fa fa-star-o"></i>
+								@endif
+							@endfor
 						</div>
-						<a class="review-link" href="#">10 Review(s) | Add your review</a>
+						<a class="review-link" href="#tabcontent">{{$product["comments"]->count()}} Review(s) | Add your review</a>
 					</div>
 					<div>
 						<h3 class="product-price">${{$product->getPrice()}} <del class="product-old-price">${{$product->getPrice()+100}}</del></h3>
@@ -139,12 +140,6 @@ endif-->
 					<p>{{$product->getDescription()}}</p>
 
 					<div class="product-options">
-						<label>
-							Size
-							<select class="input-select">
-								<option value="0">X</option>
-							</select>
-						</label>
 						<label>
 							Color
 							<select class="input-select">
@@ -157,21 +152,21 @@ endif-->
 						<div class="qty-label">
 							Qty
 							<div class="input-number">
-								<input type="number">
+								<input type="number" id="quantity" name="quantity" min="1" max="100" value="0">
 								<span class="qty-up">+</span>
 								<span class="qty-down">-</span>
 							</div>
 						</div>
 						<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
 						<div class="delete">
-							<form action="{{ route('product.delete') }}" method="POST" style ="margin-left:30%;margin-top:1%" >
+							<form action="{{ route('product.delete') }}" method="POST" style="margin-left:30%;margin-top:1%">
 								@csrf
 								<input type='hidden' name='id' value='{{$product->getId()}}' />
-								<input type='hidden' name='_method' value='DELETE'/>
-								<button class= "add-to-cart-btn" style = "width: 165.70px" type="submit" ><i class="fa fa-trash" aria-hidden="true"></i>delete</button>
-								
+								<input type='hidden' name='_method' value='DELETE' />
+								<button class="add-to-cart-btn" style="width: 165.70px" type="submit"><i class="fa fa-trash" aria-hidden="true"></i>delete</button>
+
 							</form>
-					   </div>
+						</div>
 					</div>
 
 					<ul class="product-btns">
@@ -198,13 +193,14 @@ endif-->
 			<!-- /Product details -->
 
 			<!-- /container -->
+
 			<!-- Product tab -->
 			<div class="col-md-12" id="tabcontent">
 				<div id="product-tab">
 					<!-- product tab nav -->
 					<ul class="tab-nav" id="myTab">
-						
-						<li class = "active"><a  href="#tab1" data-toggle="tab">Reviews ({{$product["comments"]->count()}})</a></li>
+
+						<li class="active"><a href="#tab1" data-toggle="tab">Reviews ({{$product["comments"]->count()}})</a></li>
 						<li><a data-toggle="tab" href="#tab2">Details</a></li>
 						<li><a data-toggle="tab" href="#tab3">Description</a></li>
 					</ul>
@@ -219,16 +215,13 @@ endif-->
 								<div class="col-md-3">
 									<div id="rating">
 										<div class="rating-avg">
-											<span>{{$product["comments"]->avg('rating')}}</span>
+											<span>{{$product["avgRating"]}}</span>
 											<div class="rating-stars">
-												@for($i = 1;$i<=5;$i++)
-													@if($i-0.2 <= $product["comments"]->avg('rating'))
-													<i class="fa fa-star"></i>
-													@elseif($i-0.75 < $product["comments"]->avg('rating'))
-													<i class="fa fa-star-half-o"></i>
-													@else
-													<i class="fa fa-star-o"></i>
-													@endif
+												@for($i = 1;$i<=5;$i++) @if($i-0.2 <=$product["avgRating"]) <i class="fa fa-star"></i>
+													@elseif($i-0.75 < $product["avgRating"]) <i class="fa fa-star-half-o"></i>
+														@else
+														<i class="fa fa-star-o"></i>
+														@endif
 												@endfor
 											</div>
 										</div>
@@ -236,18 +229,16 @@ endif-->
 											@for($i = 5; $i>0;$i--)
 											<li>
 												<div class="rating-stars">
-													@for($j = 0; $j<5;$j++)
-														@if($j<$i)
-															<i class="fa fa-star"></i>
+													@for($j = 0; $j<5;$j++) @if($j<$i) <i class="fa fa-star"></i>
 														@else
-															<i class="fa fa-star-o empty"></i>
+														<i class="fa fa-star-o empty"></i>
 														@endif
-													@endfor
+														@endfor
 												</div>
 												<div class="rating-progress">
 													@if($product["ttlRating"] != 0)
 													<div style="width:{{$product["comments"]->where('rating', $i)->count()/$product["ttlRating"]*100}}%;"></div>
-													@else 
+													@else
 													<div></div>
 													@endif
 												</div>
@@ -258,93 +249,84 @@ endif-->
 									</div>
 								</div>
 								<!-- /Rating -->
-
 								<!-- Reviews -->
-								
 								<div class="col-md-6">
 									<div id="reviews">
 										<ul class="reviews">
 											@if($product["comments"]->count() != 0)
-												@foreach($product["pgnteComments"] as $comments)
-												<li>
-													<div class="review-heading">
-														<h5 class="name">{{$comments["name"]}}</h5>
-														<p class="date">{{$comments["created_at"]}}</p>
-														<div class="review-rating">
-															@for($i = 0; $i<5;$i++)
-																@if($i<$comments["rating"])
-																	<i class="fa fa-star"></i>
-																@else
-																	<i class="fa fa-star-o empty"></i>
-																@endif
+											@foreach($product["pgnteComments"] as $comments)
+											<li>
+												<div class="review-heading">
+													<h5 class="name">{{$comments->getName()}}</h5>
+													<p class="date">{{$comments["created_at"]}}</p>
+													<div class="review-rating">
+														@for($i = 0; $i<5;$i++) @if($i<$comments->getRating())
+															<i class="fa fa-star"></i>
+															@else
+															<i class="fa fa-star-o empty"></i>
+															@endif
 															@endfor
-														</div>
 													</div>
-													<div class="review-body">
-														<p> {{$comments["description"]}}</p>
-													</div>
-												</li>
-												@endforeach
-											@else 
-											<div class="noreview-body" style="align-items:center">
-												<h3 class= "title">Nobody has reviewed yet! <br>
-																		 Do yours!</h3>
 												</div>
+												<div class="review-body">
+													<p> {{$comments->getDescription()}}</p>
+												</div>
+											</li>
+											@endforeach
+											@else
+											<div class="noreview-body" style="align-items:center">
+												<h3 class="title">Nobody has reviewed yet! <br>
+													Do yours!</h3>
 											</div>
-											<div class="review-body">
 											@endif
-										</ul>
-										<div class="center">
-											<ul class="center">
-												<a id = "button">{{$product["pgnteComments"]->links()}} </a>
-											</ul>
-											
-											
-										</div>
+										</ul>							
 									</div>
+										
+											<ul style = "margin-left:30%" id="button">{{$product["pgnteComments"]->links()}} </ul>
+																			
 								</div>
-							
 								<!-- /Reviews -->
-
 								<!-- Review Form -->
 								<div class="col-md-3">
-									<h3 class = "title"> I want to review </h3>
-									<div id="review-form">
-										<form class="review-form">
-											<input class="input" type="text" placeholder="Your Name">
-											<input class="input" type="email" placeholder="Your Email">
-											<textarea class="input" placeholder="Your Review"></textarea>
-											<div class="input-rating">
-												<span>Your Rating: </span>
-												<div class="stars">
-													<input id="star5" name="rating" value="5" type="radio"><label for="star5"></label>
-													<input id="star4" name="rating" value="4" type="radio"><label for="star4"></label>
-													<input id="star3" name="rating" value="3" type="radio"><label for="star3"></label>
-													<input id="star2" name="rating" value="2" type="radio"><label for="star2"></label>
-													<input id="star1" name="rating" value="1" type="radio"><label for="star1"></label>
-												</div>
+									<h3 class="title" id="myreview"> I want to review </h3>
+									<form class="review-form" method="POST" action="{{ route('comment.save') }}">Name
+										@csrf
+										<input class="input" type="text" placeholder="Your Name" name="name" value="{{ old('name') }}" />Email
+										<input class="input" type="email" placeholder="Your Email" name="email" value="{{ old('email') }}" />Review
+										<textarea class="input" type="text" placeholder="Your Review" name="description" value="{{ old('description') }}"></textarea>
+										<div class="input-rating">
+											<span>Your Rating: </span>
+											<div class="stars">
+												<input id="star5" name="rating" value="5" type="radio"><label for="star5"></label>
+												<input id="star4" name="rating" value="4" type="radio"><label for="star4"></label>
+												<input id="star3" name="rating" value="3" type="radio"><label for="star3"></label>
+												<input id="star2" name="rating" value="2" type="radio"><label for="star2"></label>
+												<input id="star1" name="rating" value="1" type="radio"><label for="star1"></label>
 											</div>
-											<button class="primary-btn">Submit</button>
-										</form>
-									</div>
+										</div>
+										<input type='hidden' name='product_id' value='{{$product->getId()}}' />
+
+										<button type=submit class="primary-btn">Submit</button>
+									</form>
 								</div>
-								<!-- /Review Form -->
 							</div>
+							<!-- /Review Form -->
 						</div>
+
 						<!-- /tab1  -->
 
 						<!-- tab2  -->
 						<div id="tab2" class="tab-pane fade in">
 							<div class="row">
 								<div class="col-md-12">
-									<p></p>
+									<p>{{$product->getDetails()}}</p>
 								</div>
 							</div>
 						</div>
 						<!-- /tab2  -->
 
 						<!-- tab3  -->
-						<div id="tab3" class="tab-pane fade in " >
+						<div id="tab3" class="tab-pane fade in">
 							<div class="row">
 								<div class="col-md-12">
 									<p>{{$product->getDescription()}}</p>
@@ -352,19 +334,17 @@ endif-->
 							</div>
 						</div>
 						<!-- /tab3  -->
-
-						
-
-						
 					</div>
-					<!-- /product tab content  -->
+
 				</div>
+				<!-- /product tab content  -->
 			</div>
-			<!-- /product tab -->
 		</div>
-		<!-- /row -->
+		<!-- /product tab -->
 	</div>
-	<!-- /container -->
+	<!-- /row -->
+</div>
+<!-- /container -->
 </div>
 <!-- /SECTION -->
 

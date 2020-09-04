@@ -3,7 +3,7 @@
 namespace App;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
-
+//author: Ricardo Avendaño Peña
 class Product extends Model
 {
     //attributes id, name, price, created_at, updated_at
@@ -46,6 +46,15 @@ class Product extends Model
     public function setDescription($descrpition)
     {
         $this->attributes['description'] = $descrpition;
+    }
+    public function getDetails()
+    {
+        return $this->attributes['details'];
+    }
+
+    public function setDetails()
+    {
+        $this->attributes['details'];
     }
 
     public static function validate(Request $request){
