@@ -1,5 +1,4 @@
 @extends('layouts.master')
-@section("title", $data["title"])
 @section('content')
 <!-- NAVIGATION -->
 <nav id="navigation">
@@ -57,9 +56,9 @@
                             <div class="row p-5">
                                 <div class="col-md-12">
                                     <ul id="errors">
-                                        @foreach($data["products"] as $product)
-                                                @if(intval($product->getId()) == intval($data["products"][0]->getId())||
-                                                    intval($product->getId()) == intval($data["products"][1]->getId()))
+                                        @foreach($listOfProducts as $product)
+                                                @if(intval($product->getId()) == intval($listOfProducts[0]->getId())||
+                                                    intval($product->getId()) == intval($listOfProducts[1]->getId()))
                                                 <li><a  href = "{{url('/product/showDetails/'. $product->getId() )}}"><b>{{ $product->getId() }}</b> - {{ $product->getName() }} ( {{$product->getDescription()}} )</a></li>
                                                 @else
                                                 <li><a  href = "{{url('/product/showDetails/'. $product->getId() )}}">{{ $product->getId() }} - {{ $product->getName() }} ( {{$product->getDescription()}} )</a></li>

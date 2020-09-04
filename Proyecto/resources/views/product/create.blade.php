@@ -1,5 +1,4 @@
 @extends('layouts.master')
-@section("title", $data["title"])
 @section('content')
 
 <!-- NAVIGATION -->
@@ -69,6 +68,9 @@
                             <input class = "form" type="text" placeholder="Price" name="price" value="{{ old('price') }}" />
                             <input class = "description" type="text"  style="heigth : 1000px" placeholder="Description" name="description" value="{{ old('description') }}" />
                             <br><br>
+                            <br />
+                        
+        
                             <div class="text-center">
                             <a class="red-btn" href="{{url('/index')}}">Back</a>
                             <button type="submit">Create</button>

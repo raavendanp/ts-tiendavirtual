@@ -1,6 +1,25 @@
 @extends('layouts.master')
-@section("title", $data["title"])
+@section("title", "Show Product")
 @section('content')
+
+<!--if(isset($_GET["page"]))
+	<script>
+		
+		$(document).ready(function() {
+			
+				$("body,html").animate(
+				{
+					scrollTop: $("#tabcontent").offset().top
+				},
+				0 //speed
+				);
+			
+			});
+					
+			
+	</script>
+endif-->
+
 
 <!-- NAVIGATION -->
 <nav id="navigation">
@@ -9,12 +28,16 @@
 		<!-- responsive-nav -->
 		<div id="responsive-nav">
 			<!-- NAV -->
+			
+   
 			<ul class="main-nav nav navbar-nav">
 				<li class="active"><a href="{{url('/index')}}">Home</a></li>
 				<li><a href="{{url('/product/create')}}">New Product</a></li>
 				<li><a href="{{url('/product/show')}}">See Products</a></li>
 				<li><a href="{{url('/contact')}}">Contact</a></li>
 			</ul>
+			
+		
 			<!-- /NAV -->
 		</div>
 		<!-- /responsive-nav -->
@@ -33,9 +56,8 @@
 				<ul class="breadcrumb-tree">
 					<li><a href="#">Home</a></li>
 					<li><a href="#">All Categories</a></li>
-					<li><a href="#">Accessories</a></li>
-					<li><a href="#">Headphones</a></li>
-					<li class="active">{{$data["product"][0]->getName()}}</li>
+					<li><a href="#">Category goes here</a></li>
+					<li class="active">{{$product->getName()}}</li>
 				</ul>
 			</div>
 		</div>
@@ -99,7 +121,7 @@
 			<!-- Product details -->
 			<div class="col-md-5">
 				<div class="product-details">
-					<h2 class="product-name">{{$data["product"]["name"]}}</h2>
+					<h2 class="product-name">{{$product->getName()}}</h2>
 					<div>
 						<div class="product-rating">
 							<i class="fa fa-star"></i>
@@ -111,10 +133,10 @@
 						<a class="review-link" href="#">10 Review(s) | Add your review</a>
 					</div>
 					<div>
-						<h3 class="product-price">${{$data["product"]["price"]}} <del class="product-old-price">${{$data["product"]["price"]+100}}</del></h3>
+						<h3 class="product-price">${{$product->getPrice()}} <del class="product-old-price">${{$product->getPrice()+100}}</del></h3>
 						<span class="product-available">In Stock</span>
 					</div>
-					<p>{{$data["product"]["description"]}}</p>
+					<p>{{$product->getDescription()}}</p>
 
 					<div class="product-options">
 						<label>
@@ -144,7 +166,7 @@
 						<div class="delete">
 							<form action="{{ route('product.delete') }}" method="POST" style ="margin-left:30%;margin-top:1%" >
 								@csrf
-								<input type='hidden' name='id' value='{{$data["product"]["id"]}}' />
+								<input type='hidden' name='id' value='{{$product->getId()}}' />
 								<input type='hidden' name='_method' value='DELETE'/>
 								<button class= "add-to-cart-btn" style = "width: 165.70px" type="submit" ><i class="fa fa-trash" aria-hidden="true"></i>delete</button>
 								
@@ -177,13 +199,14 @@
 
 			<!-- /container -->
 			<!-- Product tab -->
-			<div class="col-md-12">
+			<div class="col-md-12" id="tabcontent">
 				<div id="product-tab">
 					<!-- product tab nav -->
-					<ul class="tab-nav">
-						<li class="active"><a data-toggle="tab" href="#tab1">Description</a></li>
+					<ul class="tab-nav" id="myTab">
+						
+						<li class = "active"><a  href="#tab1" data-toggle="tab">Reviews ({{$product["comments"]->count()}})</a></li>
 						<li><a data-toggle="tab" href="#tab2">Details</a></li>
-						<li><a data-toggle="tab" href="#tab3">Reviews (3)</a></li>
+						<li><a data-toggle="tab" href="#tab3">Description</a></li>
 					</ul>
 					<!-- /product tab nav -->
 
@@ -192,176 +215,100 @@
 						<!-- tab1  -->
 						<div id="tab1" class="tab-pane fade in active">
 							<div class="row">
-								<div class="col-md-12">
-									<p>{{$data["product"]["description"]}}</p>
-								</div>
-							</div>
-						</div>
-						<!-- /tab1  -->
-
-						<!-- tab2  -->
-						<div id="tab2" class="tab-pane fade in">
-							<div class="row">
-								<div class="col-md-12">
-									<p></p>
-								</div>
-							</div>
-						</div>
-						<!-- /tab2  -->
-
-						<!-- tab3  -->
-						<div id="tab3" class="tab-pane fade in">
-							<div class="row">
 								<!-- Rating -->
 								<div class="col-md-3">
 									<div id="rating">
 										<div class="rating-avg">
-											<span>4.5</span>
+											<span>{{$product["comments"]->avg('rating')}}</span>
 											<div class="rating-stars">
-												<i class="fa fa-star"></i>
-												<i class="fa fa-star"></i>
-												<i class="fa fa-star"></i>
-												<i class="fa fa-star"></i>
-												<i class="fa fa-star-o"></i>
+												@for($i = 1;$i<=5;$i++)
+													@if($i-0.2 <= $product["comments"]->avg('rating'))
+													<i class="fa fa-star"></i>
+													@elseif($i-0.75 < $product["comments"]->avg('rating'))
+													<i class="fa fa-star-half-o"></i>
+													@else
+													<i class="fa fa-star-o"></i>
+													@endif
+												@endfor
 											</div>
 										</div>
 										<ul class="rating">
+											@for($i = 5; $i>0;$i--)
 											<li>
 												<div class="rating-stars">
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
+													@for($j = 0; $j<5;$j++)
+														@if($j<$i)
+															<i class="fa fa-star"></i>
+														@else
+															<i class="fa fa-star-o empty"></i>
+														@endif
+													@endfor
 												</div>
 												<div class="rating-progress">
-													<div style="width: 80%;"></div>
-												</div>
-												<span class="sum">3</span>
-											</li>
-											<li>
-												<div class="rating-stars">
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star-o"></i>
-												</div>
-												<div class="rating-progress">
-													<div style="width: 60%;"></div>
-												</div>
-												<span class="sum">2</span>
-											</li>
-											<li>
-												<div class="rating-stars">
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star-o"></i>
-													<i class="fa fa-star-o"></i>
-												</div>
-												<div class="rating-progress">
+													@if($product["ttlRating"] != 0)
+													<div style="width:{{$product["comments"]->where('rating', $i)->count()/$product["ttlRating"]*100}}%;"></div>
+													@else 
 													<div></div>
+													@endif
 												</div>
-												<span class="sum">0</span>
+												<span class="sum">{{$product["comments"]->where('rating', $i)->count()}}</span>
 											</li>
-											<li>
-												<div class="rating-stars">
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star-o"></i>
-													<i class="fa fa-star-o"></i>
-													<i class="fa fa-star-o"></i>
-												</div>
-												<div class="rating-progress">
-													<div></div>
-												</div>
-												<span class="sum">0</span>
-											</li>
-											<li>
-												<div class="rating-stars">
-													<i class="fa fa-star"></i>
-													<i class="fa fa-star-o"></i>
-													<i class="fa fa-star-o"></i>
-													<i class="fa fa-star-o"></i>
-													<i class="fa fa-star-o"></i>
-												</div>
-												<div class="rating-progress">
-													<div></div>
-												</div>
-												<span class="sum">0</span>
-											</li>
+											@endfor
 										</ul>
 									</div>
 								</div>
 								<!-- /Rating -->
 
 								<!-- Reviews -->
+								
 								<div class="col-md-6">
 									<div id="reviews">
 										<ul class="reviews">
-											<li>
-												<div class="review-heading">
-													<h5 class="name">John</h5>
-													<p class="date">27 DEC 2018, 8:0 PM</p>
-													<div class="review-rating">
-														<i class="fa fa-star"></i>
-														<i class="fa fa-star"></i>
-														<i class="fa fa-star"></i>
-														<i class="fa fa-star"></i>
-														<i class="fa fa-star-o empty"></i>
+											@if($product["comments"]->count() != 0)
+												@foreach($product["pgnteComments"] as $comments)
+												<li>
+													<div class="review-heading">
+														<h5 class="name">{{$comments["name"]}}</h5>
+														<p class="date">{{$comments["created_at"]}}</p>
+														<div class="review-rating">
+															@for($i = 0; $i<5;$i++)
+																@if($i<$comments["rating"])
+																	<i class="fa fa-star"></i>
+																@else
+																	<i class="fa fa-star-o empty"></i>
+																@endif
+															@endfor
+														</div>
 													</div>
-												</div>
-												<div class="review-body">
-													<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
-												</div>
-											</li>
-											<li>
-												<div class="review-heading">
-													<h5 class="name">John</h5>
-													<p class="date">27 DEC 2018, 8:0 PM</p>
-													<div class="review-rating">
-														<i class="fa fa-star"></i>
-														<i class="fa fa-star"></i>
-														<i class="fa fa-star"></i>
-														<i class="fa fa-star"></i>
-														<i class="fa fa-star-o empty"></i>
+													<div class="review-body">
+														<p> {{$comments["description"]}}</p>
 													</div>
+												</li>
+												@endforeach
+											@else 
+											<div class="noreview-body" style="align-items:center">
+												<h3 class= "title">Nobody has reviewed yet! <br>
+																		 Do yours!</h3>
 												</div>
-												<div class="review-body">
-													<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
-												</div>
-											</li>
-											<li>
-												<div class="review-heading">
-													<h5 class="name">John</h5>
-													<p class="date">27 DEC 2018, 8:0 PM</p>
-													<div class="review-rating">
-														<i class="fa fa-star"></i>
-														<i class="fa fa-star"></i>
-														<i class="fa fa-star"></i>
-														<i class="fa fa-star"></i>
-														<i class="fa fa-star-o empty"></i>
-													</div>
-												</div>
-												<div class="review-body">
-													<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
-												</div>
-											</li>
+											</div>
+											<div class="review-body">
+											@endif
 										</ul>
-										<ul class="reviews-pagination">
-											<li class="active">1</li>
-											<li><a href="#">2</a></li>
-											<li><a href="#">3</a></li>
-											<li><a href="#">4</a></li>
-											<li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-										</ul>
+										<div class="center">
+											<ul class="center">
+												<a id = "button">{{$product["pgnteComments"]->links()}} </a>
+											</ul>
+											
+											
+										</div>
 									</div>
 								</div>
+							
 								<!-- /Reviews -->
 
 								<!-- Review Form -->
 								<div class="col-md-3">
+									<h3 class = "title"> I want to review </h3>
 									<div id="review-form">
 										<form class="review-form">
 											<input class="input" type="text" placeholder="Your Name">
@@ -384,7 +331,31 @@
 								<!-- /Review Form -->
 							</div>
 						</div>
+						<!-- /tab1  -->
+
+						<!-- tab2  -->
+						<div id="tab2" class="tab-pane fade in">
+							<div class="row">
+								<div class="col-md-12">
+									<p></p>
+								</div>
+							</div>
+						</div>
+						<!-- /tab2  -->
+
+						<!-- tab3  -->
+						<div id="tab3" class="tab-pane fade in " >
+							<div class="row">
+								<div class="col-md-12">
+									<p>{{$product->getDescription()}}</p>
+								</div>
+							</div>
+						</div>
 						<!-- /tab3  -->
+
+						
+
+						
 					</div>
 					<!-- /product tab content  -->
 				</div>
@@ -452,11 +423,6 @@
 						<h3 class="product-name"><a href="#">product name goes here</a></h3>
 						<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
 						<div class="product-rating">
-							<i class="fa fa-star"></i>
-							<i class="fa fa-star"></i>
-							<i class="fa fa-star"></i>
-							<i class="fa fa-star"></i>
-							<i class="fa fa-star"></i>
 						</div>
 						<div class="product-btns">
 							<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
@@ -484,11 +450,6 @@
 						<h3 class="product-name"><a href="#">product name goes here</a></h3>
 						<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
 						<div class="product-rating">
-							<i class="fa fa-star"></i>
-							<i class="fa fa-star"></i>
-							<i class="fa fa-star"></i>
-							<i class="fa fa-star"></i>
-							<i class="fa fa-star-o"></i>
 						</div>
 						<div class="product-btns">
 							<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>

@@ -55,4 +55,8 @@ class Product extends Model
             "description" => "required"
         ]);
     }
+    public function comments(){
+        return $this->hasMany(Comment::class);
+    }
+
 }

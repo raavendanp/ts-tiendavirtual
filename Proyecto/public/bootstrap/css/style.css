@@ -974,6 +974,9 @@ button{
 .product .product-body .product-rating>i.fa-star {
   color: #ef233c;
 }
+.product .product-body .product-rating>i.fa-star-half-o {
+  color: #ef233c;
+}
 
 .product .product-body .product-rating:after {
   content: "";
@@ -1504,7 +1507,9 @@ button{
 .product-details .product-rating>i.fa-star {
   color: #D10024;
 }
-
+.product-details .product-rating>i.fa-star-half-o{
+  color: #D10024;
+}
 .product-details .review-link {
   font-size: 12px;
 }
@@ -1714,6 +1719,11 @@ button{
 .rating-avg .rating-stars>i.fa-star, .rating .rating-stars>i.fa-star {
   color: #D10024;
 }
+.rating-avg .rating-stars>i.fa-star-half-o, .rating .rating-stars>i.fa-star-half-o {
+  color: #D10024;
+}
+
+
 
 .rating li {
   margin: 5px 0px;
@@ -1763,6 +1773,25 @@ button{
 .reviews .review-body {
   min-height: 70px;
 }
+.reviews .noreview-body {
+  min-height: 200px;
+  text-align: center;
+  margin-top:15%;
+  font-size: medium;
+  
+}
+.page-item.active .page-link {
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  line-height: 35px;
+  text-align: center;
+  background-color: #FFF;
+  border: 1px solid #E4E7ED;
+  -webkit-transition: 0.2s all;
+  transition: 0.2s all;
+}
+
 
 .reviews .review-heading .name {
   margin-bottom: 5px;
@@ -1784,6 +1813,9 @@ button{
 }
 
 .reviews .review-heading .review-rating>i.fa-star {
+  color: #D10024;
+}
+.reviews .review-heading .review-rating>i.fa-star-half-o {
   color: #D10024;
 }
 
