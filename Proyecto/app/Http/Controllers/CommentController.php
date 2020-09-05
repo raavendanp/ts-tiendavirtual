@@ -19,5 +19,6 @@ class CommentController extends Controller
         Comment::create($request->only(["name", "email", "description","rating","product_id"]));
         $product_id = $request->product_id;
         return redirect('/product/showDetails/'.$product_id.'#tabcontent');
+    
     }
 }

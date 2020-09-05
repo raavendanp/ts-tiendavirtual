@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section("title", "Show Product")
 @section('content')
- 
+
         <!-- NAVIGATION -->
 		<nav id="navigation">
 			<!-- container -->
@@ -57,49 +57,45 @@
 						<!-- Billing Details -->
 						<div class="billing-details">
 							<div class="section-title">
-								<h3 class="title">Billing address</h3>
+								<h3 class="title">Buyer Information</h3>
+							</div>
+						<form method="POST" id = "form1"action="{{ route('checkout.client.save') }}">
+							@csrf
+							<div class="form-group">
+								<input class="input" type="text" name="first_name" placeholder="First Name" value= "{{ old('first_name') }}" >
 							</div>
 							<div class="form-group">
-								<input class="input" type="text" name="first-name" placeholder="First Name">
+								<input class="input" type="text" name="last_name" placeholder="Last Name" value= "{{ old('last_name') }}">
 							</div>
 							<div class="form-group">
-								<input class="input" type="text" name="last-name" placeholder="Last Name">
+								<input class="input" type="email" name="email" placeholder="Email" value= "{{ old('email') }}">
 							</div>
 							<div class="form-group">
-								<input class="input" type="email" name="email" placeholder="Email">
+								<input class="input" type="text" name="adress" placeholder="Address" value= "{{ old('adress') }}">
 							</div>
 							<div class="form-group">
-								<input class="input" type="text" name="address" placeholder="Address">
+								<input class="input" type="text" name="city" placeholder="City" value= "{{ old('city') }}">
 							</div>
 							<div class="form-group">
-								<input class="input" type="text" name="city" placeholder="City">
+								<input class="input" type="text" name="country" placeholder="Country" value= "{{ old('country') }}">
 							</div>
 							<div class="form-group">
-								<input class="input" type="text" name="country" placeholder="Country">
+								<input class="input" type="text" name="zip_code" placeholder="ZIP Code" value= "{{ old('zip_code') }}">
 							</div>
 							<div class="form-group">
-								<input class="input" type="text" name="zip-code" placeholder="ZIP Code">
+								<input class="input" type="text" name="telephone" placeholder="Telephone" value= "{{ old('telephone') }}">
 							</div>
-							<div class="form-group">
-								<input class="input" type="tel" name="tel" placeholder="Telephone">
-							</div>
+							<button style="margin-left:40%" type=submit class="primary-btn">Continue</button>	
+						</form>
 							<div class="form-group">
 								<div class="input-checkbox">
 									<input type="checkbox" id="create-account">
-									<label for="create-account">
-										<span></span>
-										Create Account?
-									</label>
-									<div class="caption">
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
-										<input class="input" type="password" name="password" placeholder="Enter Your Password">
-									</div>
 								</div>
 							</div>
 						</div>
 						<!-- /Billing Details -->
 
-						<!-- Shiping Details -->
+						<!-- Shiping Details 
 						<div class="shiping-details">
 							<div class="section-title">
 								<h3 class="title">Shiping address</h3>
@@ -111,45 +107,50 @@
 									Ship to a diffrent address?
 								</label>
 								<div class="caption">
-									<div class="form-group">
-										<input class="input" type="text" name="first-name" placeholder="First Name">
-									</div>
-									<div class="form-group">
-										<input class="input" type="text" name="last-name" placeholder="Last Name">
-									</div>
-									<div class="form-group">
-										<input class="input" type="email" name="email" placeholder="Email">
-									</div>
-									<div class="form-group">
-										<input class="input" type="text" name="address" placeholder="Address">
-									</div>
-									<div class="form-group">
-										<input class="input" type="text" name="city" placeholder="City">
-									</div>
-									<div class="form-group">
-										<input class="input" type="text" name="country" placeholder="Country">
-									</div>
-									<div class="form-group">
-										<input class="input" type="text" name="zip-code" placeholder="ZIP Code">
-									</div>
-									<div class="form-group">
-										<input class="input" type="tel" name="tel" placeholder="Telephone">
-									</div>
+									<form method="POST" action="{{ route('checkout.client.save') }}">
+										@csrf
+										<div class="form-group">
+											<input class="input" type="text" name="first_name" placeholder="First Name" value= "{{ old('first_name') }}" >
+										</div>
+										<div class="form-group">
+											<input class="input" type="text" name="last_name" placeholder="Last Name" value= "{{ old('last_name') }}">
+										</div>
+										<div class="form-group">
+											<input class="input" type="email" name="email" placeholder="Email" value= "{{ old('email') }}">
+										</div>
+										<div class="form-group">
+											<input class="input" type="text" name="adress" placeholder="Address" value= "{{ old('adress') }}">
+										</div>
+										<div class="form-group">
+											<input class="input" type="text" name="city" placeholder="City" value= "{{ old('city') }}">
+										</div>
+										<div class="form-group">
+											<input class="input" type="text" name="country" placeholder="Country" value= "{{ old('country') }}">
+										</div>
+										<div class="form-group">
+											<input class="input" type="text" name="zip_code" placeholder="ZIP Code" value= "{{ old('zip_code') }}">
+										</div>
+										<div class="form-group">
+											<input class="input" type="text" name="telephone" placeholder="Telephone" value= "{{ old('telephone') }}">
+										</div>
+										
+									</form>
+									
 								</div>
 							</div>
 						</div>
-						<!-- /Shiping Details -->
+						 /Shiping Details -->
 
-						<!-- Order notes -->
+						<!-- Order notes 
 						<div class="order-notes">
 							<textarea class="input" placeholder="Order Notes"></textarea>
 						</div>
-						<!-- /Order notes -->
+						/Order notes -->
 					</div>
 
 					<!-- Order Details -->
 					<div class="col-md-5 order-details">
-						<div class="section-title text-center">
+						<div class="section-title form-center">
 							<h3 class="title">Your Order</h3>
 						</div>
 						<div class="order-summary">
@@ -176,7 +177,7 @@
 								<div><strong class="order-total">$2940.00</strong></div>
 							</div>
 						</div>
-						<div class="payment-method">
+						<!--<div class="payment-method">
 							<div class="input-radio">
 								<input type="radio" name="payment" id="payment-1">
 								<label for="payment-1">
@@ -214,8 +215,8 @@
 								<span></span>
 								I've read and accept the <a href="#">terms & conditions</a>
 							</label>
-						</div>
-						<a href="#" class="primary-btn order-submit">Place order</a>
+						</div>-->
+						
 					</div>
 					<!-- /Order Details -->
 				</div>
