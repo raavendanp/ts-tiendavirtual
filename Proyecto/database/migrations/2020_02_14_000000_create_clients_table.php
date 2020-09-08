@@ -14,14 +14,10 @@ class CreateClientsTable extends Migration
     public function up()
     {
         Schema::create('clients', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->text('first_name');
             $table->text('last_name');
             $table->text('email');
-            $table->text('adress');
-            $table->text('city');
-            $table->text('country');
-            $table->text('zip_code');
             $table->text('telephone');
             $table->timestamps();
         });
@@ -34,6 +30,6 @@ class CreateClientsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('clients');
     }
 }

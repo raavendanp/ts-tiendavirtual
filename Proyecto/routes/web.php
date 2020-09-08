@@ -26,6 +26,8 @@ Route::delete('/product/delete', 'ProductController@delete')->name("product.dele
 Route::get('/product/delete', 'HomeController@goindex');
 Route::get('/checkout/client', 'ClientController@show')->name("checkout.client");
 Route::post('/checkout/client', 'ClientController@save')->name("checkout.client.save");
-Route::get('/checkout/shipping', 'ShippingController@show')->name("checkout.shipping");
+//Route::get('/checkout/shipping', 'ShippingController@show')->name("checkout.shipping");
 Route::post('/checkout/shipping', 'ShippingController@save')->name("checkout.shipping.save");
+Route::get('/checkout/order', 'orderController@show')->name("checkout.order");
+Route::post('/checkout/order', 'orderController@save')->name("checkout.order.save");
 Route::get('/category/all', 'CategoryController@all')->name("category.all");

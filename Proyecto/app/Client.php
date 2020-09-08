@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class Client extends Model
 {
     protected $fillable = [
-        'first_name', 'email', 'last_name', 'country', 'city', 'zip_code', 'adress', 'telephone',
+        'first_name', 'email', 'last_name', 'telephone',
     ];
 
     public function getId()
@@ -49,24 +49,13 @@ class Client extends Model
     {
         $this->attributes['email'] = $email;
     }
-    public function getAdress()
-    {
-        return $this->attributes['adress'];
-    }
-    public function setAdress($adress)
-    {
-        $this->attributes['adress'] = $adress;
-    }
+    
     public static function validate(Request $request){
         $request->validate([
             "first_name" => "required",
             "last_name" => "required",
-            "adress" => "required",
-            "email" => "required",
-            "zip_code" => "numeric",
-            "city" => "required",
-            "country" => "required",
-            "telephone" => "required",
+            "email" => "email|required",
+            "telephone" => "numeric",
 
         ]);
     }

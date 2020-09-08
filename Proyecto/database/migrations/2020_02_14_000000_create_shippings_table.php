@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCommentsTable extends Migration
+class CreateshippingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,15 @@ class CreateCommentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('comments', function (Blueprint $table) {
+        Schema::create('shippings', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->text('description');
+            $table->text('adress');
+            $table->text('city');
+            $table->text('state');
+            $table->text('country');
+            $table->text('zip_code');
             $table->text('details');
-            $table->text('name');
-            $table->text('email');
-            $table->text('rating');
-            $table->bigInteger('product_id')->unsigned();;
-            $table->foreign('product_id')->references('id')->on('products');
+            $table->text('shipping_cost');
             $table->timestamps();
         });
     }
@@ -33,6 +33,6 @@ class CreateCommentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('comments');
+        Schema::dropIfExists('shippings');
     }
 }

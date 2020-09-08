@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Client;
-use App\Comment;
+use App\Shipping;
 use Illuminate\Http\Request;
 
 class ShippingController extends Controller
@@ -15,8 +15,25 @@ class ShippingController extends Controller
 
     public function save(Request $request)
     {
-        Client::validate($request);
-        Client::create($request->only(["first_name", "last_name","adress","city", "country", "zip_code","email","telephone"]));
-        return redirect('/checkout/shipping');
+        $data = [];
+        Shipping::validate($request);
+        
+        Shipping::create($request->only(["adress","city", "country", "state", "zip_code","details","shipping_cost"]));
+        $data["client_id"] = $request->client_id;
+        $data["first_name"] = $request->first_name;
+        $data["last_name"] = $request->last_name;
+        $data["email"] = $request->email;
+        $data["telephone"] = $request->telephone;
+        $data["shipping_id"] = Shipping::all()->last()->getId();
+        $data["adress"] = $request->adress;
+        $data["country"] = $request->country;
+        $data["city"] = $request->city;
+        $data["state"] = $request->state;
+        $data["details"] = $request->details;
+        $data["zip_code"] = $request->zip_code;
+        $data["shipping_cost"] = $request->shipping_cost;
+        $data["payment_method"] = $request->payment_method;
+        
+        return view('checkout.order')->with('data',$data);
     }
 }
