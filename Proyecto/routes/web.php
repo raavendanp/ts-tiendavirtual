@@ -25,6 +25,12 @@ Route::post('/product/create', 'ProductController@save')->name("product.save");
 Route::get('/product/save', 'HomeController@goindex');
 Route::delete('/product/delete', 'ProductController@delete')->name("product.delete");
 Route::get('/product/delete', 'HomeController@goindex');
+//Cart
+Route::post('/products/add-to-cart/{id}', 'ProductController@addToCart')->name("product.addToCart");
+Route::get('/cart/remove', 'ProductController@removeCart')->name("product.removeCart");
+Route::get('/cart/carts', 'ProductController@cart')->name("product.cart");
+Route::post('/cart/buy', 'ProductController@buy')->name("product.buy");
+
 //Checkout
 Route::get('/checkout/client', 'ClientController@show')->name("checkout.client");
 Route::post('/checkout/client', 'ClientController@save')->name("checkout.client.save");

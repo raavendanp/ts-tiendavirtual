@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     //attributes id, name, price, created_at, updated_at
-    protected $fillable = ['name','price','description','details'];
+    protected $fillable = ['name','price','description','details','catalogue_id'];
 
     public function getId()
     {
@@ -62,11 +62,15 @@ class Product extends Model
             "name" => "required",
             "price" => "required|numeric|gt:0",
             "description" => "required",
-            "details" => "required"
+            "details" => "required",
+            "catalogue_id" => "required"
         ]);
     }
     public function comments(){
         return $this->hasMany(Comment::class);
+    }
+    public function catalogue(){
+        return $this->belongsTo(Catalogue::class);
     }
 
 }

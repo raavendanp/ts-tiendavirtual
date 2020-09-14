@@ -83,6 +83,9 @@
                                     <div class="order-notes">
                                         <textarea class="input" placeholder="Product Details" name="details" value="{{ old('details') }}"></textarea>
                                     </div>
+                                    <div class="order-notes">
+                                        <textarea class="input" placeholder="Catalogue" name="catalogue_id" value="{{ old('catalogue_id') }}"></textarea>
+                                    </div>
                                 </div>
                             </div>
                         

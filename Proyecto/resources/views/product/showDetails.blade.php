@@ -3,17 +3,17 @@
 @section('content')
 
 @if(isset($_GET["page"]))
-	<script>	
+	<script>
 		$(document).ready(function() {
-			
+
 				$("body,html").animate(
 				{
 					scrollTop: $("#tabcontent").offset().top
 				},
 				0 //speed
 				);
-			
-			});	
+
+			});
 	</script>
 @endif
 
@@ -118,10 +118,10 @@
 					<h2 class="product-name">{{$product->getName()}}</h2>
 					<div>
 						<div class="product-rating">
-							@for($i = 1;$i<=5;$i++) 
-								@if($i-0.2 <=$product["avgRating"]) 
+							@for($i = 1;$i<=5;$i++)
+								@if($i-0.2 <=$product["avgRating"])
 									<i class="fa fa-star"></i>
-								@elseif($i-0.75 < $product["avgRating"]) 
+								@elseif($i-0.75 < $product["avgRating"])
 									<i class="fa fa-star-half-o"></i>
 								@else
 									<i class="fa fa-star-o"></i>
@@ -145,16 +145,25 @@
 						</label>
 					</div>
 
-					<div class="add-to-cart">
-						<div class="qty-label">
-							Qty
-							<div class="input-number">
-								<input type="number" id="quantity" name="quantity" min="1" max="100" value="0">
-								<span class="qty-up">+</span>
-								<span class="qty-down">-</span>
-							</div>
-						</div>
-						<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+
+
+                        <div class="add-to-cart">
+
+
+                            <form action="{{ route('product.addToCart',['id'=>$product->getId()]) }}" method="POST">
+                                @csrf
+                                <div class="qty-label">
+                                    Qty
+                                    <div class="input-number">
+                                        <input type="number" id="quantity" name="quantity" min="1" max="100" value="0">
+                                        <span class="qty-up">+</span>
+                                        <span class="qty-down">-</span>
+                                    </div>
+                                </div>
+                                <button type="submit" class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i>Add</button>
+
+                            </form>
+                        </div>
 						<div class="delete">
 							<form action="{{ route('product.delete') }}" method="POST" style="margin-left:30%;margin-top:1%">
 								@csrf
@@ -164,6 +173,7 @@
 
 							</form>
 						</div>
+
 					</div>
 
 					<ul class="product-btns">
@@ -276,11 +286,11 @@
 													Do yours!</h3>
 											</div>
 											@endif
-										</ul>							
+										</ul>
 									</div>
-										
+
 											<ul style = "margin-left:30%" id="button">{{$product["pgnteComments"]->links()}} </ul>
-																			
+
 								</div>
 								<!-- /Reviews -->
 								<!-- Review Form -->
