@@ -39,13 +39,11 @@ class CatalogueControlle extends Controller
 
     public function save(Request $request)
     {
-        $request->validate([
-            "name" => "required",
-            "description" => "required"
-        ]);
+        Catalogue::validate($request);
         Catalogue::create($request->only(["name","description"]));
 
         return back()->with('success','Item created successfully!');
+
     }
     public function delete(Request $request)
     {

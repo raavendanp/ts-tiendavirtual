@@ -1,7 +1,7 @@
 <?php
 
 namespace App;
-
+use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
 
 class Catalogue extends Model
@@ -37,6 +37,12 @@ class Catalogue extends Model
     public function setDescription($descrpition)
     {
         $this->attributes['description'] = $descrpition;
+    }
+    public static function validate(Request $request){
+        $request->validate([
+            "name" => "required",
+            "description" => "required"
+        ]);
     }
 
 }
