@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+//author: Ricardo Avendaño Peña
 use App\Comment;
 use Illuminate\Http\Request;
 use App\Product;

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     //attributes id, name, price, created_at, updated_at
-    protected $fillable = ['name','price','description'];
+    protected $fillable = ['name','price','description','details'];
 
     public function getId()
     {
@@ -61,7 +61,8 @@ class Product extends Model
         $request->validate([
             "name" => "required",
             "price" => "required|numeric|gt:0",
-            "description" => "required"
+            "description" => "required",
+            "details" => "required"
         ]);
     }
     public function comments(){

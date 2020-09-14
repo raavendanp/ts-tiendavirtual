@@ -12,6 +12,7 @@
 				<li><a href="{{url('/product/create')}}">New Product</a></li>
 				<li><a href="{{url('/product/show')}}">See Products</a></li>
 				<li class="active"><a href="{{url('/contact')}}">Contact</a></li>
+                <li><a href= "{{ url('/catalogue/showCatalogues')}}" >Catalogues</a></li>
 			</ul>
 			<!-- /NAV -->
 		</div>
@@ -56,13 +57,13 @@
                     </div>
                     <div class="col-md-12" style = "margin-top: 39px">
                         <ul>Ricardo Avendaño Peña</ul>
-                        <ul>raavendanp@eafit.edu.co</ul> 
+                        <ul>raavendanp@eafit.edu.co</ul>
                         <div class="text-center">
                             <a class="red-btn" href="{{url('/index')}}">Back</a>
-                  
-                          </div> 
+
+                          </div>
                     </div>
-                   
+
             </div>
         </div>
     </div>

@@ -12,7 +12,7 @@ class ProductController extends Controller
     {
         $listOfProducts = []; //to be sent to the view
         $listOfProducts =  Product::orderBy('id', 'ASC')->get(); //trae la busqueda en orden ascendente con orderBy
-        return view('product.show')->with("listOfProducts", $listOfProducts);
+        return view('product.showProducts')->with("listOfProducts", $listOfProducts);
     }
     public function showDetails($id)
     {
@@ -28,14 +28,14 @@ class ProductController extends Controller
 
     public function create()
     {
-        return view('product.create');
+        return view('product.createProducts');
     }
 
 
     public function save(Request $request)
     {
         Product::validate($request);    
-        Product::create($request->only(["name", "price", "description"]));
+        Product::create($request->only(["name", "price", "description","details"]));
 
         return back()->with('success', 'Item created successfully!');
     }
