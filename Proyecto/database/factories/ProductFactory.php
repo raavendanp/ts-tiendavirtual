@@ -22,5 +22,6 @@ $factory->define(Product::class, function (Faker $faker) {
         'name' => $faker->company,
         'price' => $faker->numberBetween($min = 200, $max = 9000),
         'description' => $faker->company,
+        'details' => $faker->company,
     ];
 });

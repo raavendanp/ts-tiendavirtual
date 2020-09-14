@@ -1,54 +1,51 @@
 <?php
-
 namespace App\Http\Controllers;
+//author: Ricardo Avendaño Peña
 use Illuminate\Http\Request;
 use App\Product;
 use Illuminate\Support\Facades\Redis;
 
 class ProductController extends Controller
 {
-    public function show()
+    public function show($sort)
     {
-        $data = []; //to be sent to the view
-        $data["title"] = "Show product";
-        $data["products"] =  Product::orderBy('id','ASC')->get(); //trae la busqueda en orden ascendente con orderBy
-        return view('product.show')->with("data",$data);
+        $listOfProducts = []; //to be sent to the view
+        if($sort == "lower_price"){
+          $listOfProducts =  Product::orderBy('price', 'ASC')->get(); //trae la busqueda en orden ascendente con orderBy
+        }
+        else{
+          $listOfProducts =  Product::orderBy('created_at', 'DESC')->get(); //trae la busqueda en orden ascendente con orderBy
+        }
+        return view('product.showProducts')->with("listOfProducts", $listOfProducts);
     }
     public function showDetails($id)
     {
-        $data = []; //to be sent to the view
-        $data["title"] = "Show product";
-        $data["product"] =  Product::where('id', $id)->get();
-        $data["product"]["id"] = $data["product"][0]->getId();
-        $data["product"]["name"] = $data["product"][0]->getName();
-        $data["product"]["price"] = $data["product"][0]->getPrice();
-        $data["product"]["description"] = $data["product"][0]->getDescription();
+                    
+        $product =  Product::findOrFail($id);
+        $product["comments"] =  $product->comments()->where('product_id',$id)->get();
+        $product["pgnteComments"] =  $product->comments()->where('product_id',$id)->paginate(3);
+        $product["avgRating"] = round($product->comments()->where('product_id',$id)->avg('rating'), 1);
+        $product["ttlRating"]= $product->comments()->where('product_id',$id)->count();
+        return view('product.showDetails')->with("product", $product);
 
-        return view('product.showDetails')->with("data",$data);
     }
 
     public function create()
     {
-        $data = []; //to be sent to the view
-        $data["title"] = "Create product";
-        $data["products"] = Product::all();
-
-        return view('product.create')->with("data",$data);
+        return view('product.createProducts');
     }
 
 
     public function save(Request $request)
     {
-        Product::validate($request);
-        Product::create($request->only(["name","price","description"]));
+        Product::validate($request);    
+        Product::create($request->only(["name", "price", "description","details"]));
 
-        return back()->with('success','Item created successfully!');
+        return back()->with('success', 'Item created successfully!');
     }
     public function delete(Request $request)
     {
         Product::destroy($request->only(["id"]));
         return view('product.deleted');
     }
-    
-
 }

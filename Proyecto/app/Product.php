@@ -3,11 +3,11 @@
 namespace App;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
-
+//author: Ricardo Avendaño Peña
 class Product extends Model
 {
     //attributes id, name, price, created_at, updated_at
-    protected $fillable = ['name','price','description'];
+    protected $fillable = ['name','price','description','details'];
 
     public function getId()
     {
@@ -47,12 +47,26 @@ class Product extends Model
     {
         $this->attributes['description'] = $descrpition;
     }
+    public function getDetails()
+    {
+        return $this->attributes['details'];
+    }
+
+    public function setDetails()
+    {
+        $this->attributes['details'];
+    }
 
     public static function validate(Request $request){
         $request->validate([
             "name" => "required",
             "price" => "required|numeric|gt:0",
-            "description" => "required"
+            "description" => "required",
+            "details" => "required"
         ]);
     }
+    public function comments(){
+        return $this->hasMany(Comment::class);
+    }
+
 }
