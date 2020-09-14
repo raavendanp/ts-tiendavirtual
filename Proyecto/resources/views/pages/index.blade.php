@@ -13,7 +13,11 @@
 				<li><a href="{{url('/product/show/last')}}">See Products</a></li>
 				<li><a href="{{url('/contact')}}">Contact</a></li>
                 <li><a href= "{{ url('/catalogue/showCatalogues')}}" >Catalogues</a></li>
-			</ul>
+                <li><a href= "{{ url('/cart/carts')}}" >Cart</a></li>
+                <li><a href= "{{ url('/cart/remove')}}" >Remove Cart</a></li>
+
+
+            </ul>
 			<!-- /NAV -->
 		</div>
 		<!-- /responsive-nav -->
