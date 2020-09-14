@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 //author: Ricardo Avendaño Peña
 use Illuminate\Http\Request;
 use App\Product;
+use App\Cart;
+use App\Item;
 use Illuminate\Support\Facades\Redis;
 
 class ProductController extends Controller
@@ -51,9 +53,9 @@ class ProductController extends Controller
 
     public function buy(Request $request)
     {
-        $order = new Order();
-        $order->setTotal("0");
-        $order->save();
+        $cart = new Cart();
+        $cart->setTotal("0");
+        $cart->save();
 
         $precioTotal = 0;
 
@@ -63,20 +65,20 @@ class ProductController extends Controller
             for ($i = 0; $i < count($keys); $i++) {
                 $item = new Item();
                 $item->setProductId($keys[$i]);
-                $item->setOrderId($order->getId());
+                $item->setCartId($cart->getId());
                 $item->setQuantity($products[$keys[$i]]);
                 $item->save();
                 $productActual = Product::find($keys[$i]);
                 $precioTotal = $precioTotal + $productActual->getPrice() * $products[$keys[$i]];
             }
 
-            $order->setTotal($precioTotal);
-            $order->save();
+            $cart->setTotal($precioTotal);
+            $cart->save();
 
             $request->session()->forget('products');
         }
 
-        return redirect()->route('product.index');
+        return redirect()->route('pages.index');
     }
 
     public function showDetails($id)
