@@ -257,6 +257,7 @@
 											<i class="fa fa-star-o"></i>
 										@endif
 									@endfor
+									<h4 class="product-price">{{$product->comments()->count()}} Reviews</h4>
 								</div>
 								
 							</div>

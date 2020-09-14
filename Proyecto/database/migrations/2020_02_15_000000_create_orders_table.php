@@ -18,8 +18,8 @@ class CreateOrdersTable extends Migration
             $table->text('payment_method');
             $table->bigInteger('shipping_id')->unsigned();;
             $table->bigInteger('client_id')->unsigned();;
-            $table->foreign('shipping_id')->references('id')->on('shippings');
-            $table->foreign('client_id')->references('id')->on('clients');
+            $table->foreign('shipping_id')->references('id')->on('shippings')->onDelete('cascade');
+            $table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade');
             $table->timestamps();
         });
     }

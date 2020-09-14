@@ -46,6 +46,6 @@ class ProductController extends Controller
     public function delete(Request $request)
     {
         Product::destroy($request->only(["id"]));
-        return view('product.deleted');
+        return view('product.deletedProducts');
     }
 }
