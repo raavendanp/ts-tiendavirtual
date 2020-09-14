@@ -14,7 +14,7 @@ class ProductController extends Controller
           $listOfProducts["all"] =  Product::orderBy('price', 'ASC')->get(); //trae la busqueda en orden ascendente con orderBy
         }
         else{
-          $listOfProducts["all"] =  Product::orderBy('created_at', 'DESC')->get(); //trae la busqueda en orden ascendente con orderBy
+          $listOfProducts["all"] =  Product::orderBy('created_at', 'DESC')->get(); 
         }
         $listOfProducts["top"] = Product::orderBy('price', 'DESC')->get()->take(2);
         return view('product.showProducts')->with("listOfProducts", $listOfProducts);
@@ -40,7 +40,7 @@ class ProductController extends Controller
     public function save(Request $request)
     {
         Product::validate($request);    
-        Product::create($request->only(["name", "price", "description","details"]));
+        Product::create($request->only(["name", "price", "description","details","catalogue_id"]));
 
         return back()->with('success', 'Item created successfully!');
     }
