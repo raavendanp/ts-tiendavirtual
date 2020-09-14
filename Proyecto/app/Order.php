@@ -21,7 +21,7 @@ class Order extends Model
     {
         $this->attributes['id'] = $id;
     }
-    
+
     public function getPaymenthMethod()
     {
         return $this->attributes['payment_method'];
@@ -31,8 +31,8 @@ class Order extends Model
     {
         $this->attributes['payment_method'] = $payment_method;
     }
-    
-    
+
+
     public static function validate(Request $request){
         $request->validate([
             "payment_method" => "required",
