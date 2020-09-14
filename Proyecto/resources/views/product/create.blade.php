@@ -4,22 +4,23 @@
 
 <!-- NAVIGATION -->
 <nav id="navigation">
-	<!-- container -->
-	<div class="container">
-		<!-- responsive-nav -->
-		<div id="responsive-nav">
-			<!-- NAV -->
-			<ul class="main-nav nav navbar-nav">
+    <!-- container -->
+    <div class="container">
+        <!-- responsive-nav -->
+        <div id="responsive-nav">
+            <!-- NAV -->
+            <ul class="main-nav nav navbar-nav">
                 <li><a href="{{url('/index')}}">Home</a></li>
-				<li class="active"><a href="{{url('/product/create')}}">New Product</a></li>
-				<li><a href="{{url('/product/show')}}">See Products</a></li>
-				<li><a href="{{url('/contact')}}">Contact</a></li>
-			</ul>
-			<!-- /NAV -->
-		</div>
-		<!-- /responsive-nav -->
-	</div>
-	<!-- /container -->
+                <li class="active" ><a href="{{url('/product/create')}}">New Product</a></li>
+                <li><a href="{{url('/product/show')}}">See Products</a></li>
+                <li><a href="{{url('/contact')}}">Contact</a></li>
+                <li><a href= "{{ url('/catalogue/showCatalogues')}}" >Catalogues</a></li>
+            </ul>
+            <!-- /NAV -->
+        </div>
+        <!-- /responsive-nav -->
+    </div>
+    <!-- /container -->
 </nav>
 <!-- /NAVIGATION -->
 
@@ -73,7 +74,7 @@
                             <a class="red-btn" href="{{url('/index')}}">Back</a>
                             <button type="submit">Create</button>
                             </div>
-                            
+
                         </form>
                         </div>
                     </div>

@@ -12,7 +12,7 @@
 				<li><a href="{{url('/product/create')}}">New Product</a></li>
 				<li><a href="{{url('/product/show')}}">See Products</a></li>
 				<li><a href="{{url('/contact')}}">Contact</a></li>
-                <li><a href= "{{ url('/catalogue/create')}}" >New Catalogue </a></li>
+                <li><a href= "{{ url('/catalogue/showCatalogues')}}" >Catalogues</a></li>
 			</ul>
 			<!-- /NAV -->
 		</div>

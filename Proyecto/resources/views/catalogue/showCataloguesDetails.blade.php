@@ -1,6 +1,25 @@
 @extends('layouts.master')
 @section("title", $data["title"])
 @section('content')
+<nav id="navigation">
+    <!-- container -->
+    <div class="container">
+        <!-- responsive-nav -->
+        <div id="responsive-nav">
+            <!-- NAV -->
+            <ul class="main-nav nav navbar-nav">
+                <li><a href="{{url('/index')}}">Home</a></li>
+                <li><a href="{{url('/product/create')}}">New Product</a></li>
+                <li><a href="{{url('/product/show')}}">See Products</a></li>
+                <li><a href="{{url('/contact')}}">Contact</a></li>
+                <li class="active" ><a href= "{{ url('/catalogue/showCatalogues')}}" >Catalogues</a></li>
+            </ul>
+            <!-- /NAV -->
+        </div>
+        <!-- /responsive-nav -->
+    </div>
+    <!-- /container -->
+</nav>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -15,7 +34,7 @@
                            <div class="text-center">
                                 <form method="POST" action="{{ route('catalogue.delete') }}">
                                     @csrf
-                                    <a class="btn btn-primary" href="{{url('/catalogue/show')}}">Back</a>
+                                    <a class="btn btn-primary" href="{{url('/catalogue/showCatalogues')}}">Back</a>
                                     <input type='hidden' name='id' value='{{$data["catalogue"]["id"]}}' />
                                     <button type="submit" class="btn btn-primary">Delete</button>
 

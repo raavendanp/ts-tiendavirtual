@@ -1,6 +1,7 @@
 @extends('layouts.master')
 @section("title", "Alert")
 @section('content')
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -12,7 +13,7 @@
                         <br><br>
                     </div>
                     <div class="text-center">
-                      <a class="btn btn-primary" href="{{url('/catalogue/show')}}">Catalogues</a>
+                      <a class="btn btn-primary" href="{{url('/catalogue/showCatalogues')}}">Catalogues</a>
                       <a class="btn btn-primary" href="{{url('/catalogue/create')}}">Create</a>
 
 
