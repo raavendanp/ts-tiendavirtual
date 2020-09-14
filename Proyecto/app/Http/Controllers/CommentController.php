@@ -4,15 +4,11 @@ namespace App\Http\Controllers;
 //author: Ricardo Avendaño Peña
 use App\Comment;
 use Illuminate\Http\Request;
-use App\Product;
-use Illuminate\Support\Facades\Redis;
+
 //author: Ricardo Avendaño Peña
 class CommentController extends Controller
 {
-    public function create()
-    {
-        return view('product.createcomment');
-    }
+    
     public function save(Request $request)
     {
         Comment::validate($request);

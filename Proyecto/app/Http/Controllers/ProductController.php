@@ -7,10 +7,15 @@ use Illuminate\Support\Facades\Redis;
 
 class ProductController extends Controller
 {
-    public function show()
+    public function show($sort)
     {
         $listOfProducts = []; //to be sent to the view
-        $listOfProducts =  Product::orderBy('id', 'ASC')->get(); //trae la busqueda en orden ascendente con orderBy
+        if($sort == "lower_price"){
+          $listOfProducts =  Product::orderBy('price', 'ASC')->get(); //trae la busqueda en orden ascendente con orderBy
+        }
+        else{
+          $listOfProducts =  Product::orderBy('created_at', 'DESC')->get(); //trae la busqueda en orden ascendente con orderBy
+        }
         return view('product.showProducts')->with("listOfProducts", $listOfProducts);
     }
     public function showDetails($id)

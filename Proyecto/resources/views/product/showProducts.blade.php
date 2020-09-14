@@ -10,7 +10,7 @@
 			<ul class="main-nav nav navbar-nav">
 				<li><a href="{{url('/index')}}">Home</a></li>
 				<li><a href="{{url('/product/create')}}">New Product</a></li>
-				<li class="active"><a href="{{url('/product/show')}}">See Products</a></li>
+				<li class="active"><a href="{{url('/product/show/last')}}">See Products</a></li>
 				<li><a href="{{url('/contact')}}">Contact</a></li>
 				<li><a href="{{ url('/catalogue/showCatalogues')}}">Catalogues</a></li>
 			</ul>
@@ -216,18 +216,10 @@
 					<div class="store-sort">
 						<label>
 							Sort By:
-							<select class="input-select">
-								<option value="0">Popular</option>
-								<option value="1">Position</option>
-							</select>
-						</label>
-
-						<label>
-							Show:
-							<select class="input-select">
-								<option value="0">20</option>
-								<option value="1">50</option>
-							</select>
+							
+							<button class="input-select"><a href="{{url('/product/show/last')}}">Last</button>
+							<button class = "input-select"><a href="{{url('/product/show/lower_price')}}">Low Price</button>
+							
 						</label>
 					</div>
 					<ul class="store-grid">

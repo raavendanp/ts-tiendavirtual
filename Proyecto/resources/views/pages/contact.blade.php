@@ -10,7 +10,7 @@
 			<ul class="main-nav nav navbar-nav">
 				<li><a href="{{url('/index')}}">Home</a></li>
 				<li><a href="{{url('/product/create')}}">New Product</a></li>
-				<li><a href="{{url('/product/show')}}">See Products</a></li>
+				<li><a href="{{url('/product/show/last')}}">See Products</a></li>
 				<li class="active"><a href="{{url('/contact')}}">Contact</a></li>
                 <li><a href= "{{ url('/catalogue/showCatalogues')}}" >Catalogues</a></li>
 			</ul>
