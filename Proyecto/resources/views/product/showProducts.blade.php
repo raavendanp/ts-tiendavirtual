@@ -194,16 +194,22 @@
 				<!-- aside Widget -->
 				<div class="aside">
 					<h3 class="aside-title">Top selling</h3>
+					@foreach($listOfProducts["top"] as $products)
+						
 					<div class="product-widget">
 						<div class="product-img">
 							<img src="{{asset('bootstrap/img/product01.png')}}" alt="">
 						</div>
 						<div class="product-body">
 							<p class="product-category">Category</p>
-							<h3 class="product-name"><a href="{{url('/product/showDetails/'. $listOfProducts[0]["id"])}}">{{$listOfProducts[0]["name"]}}</a></h3>
-							<h4 class="product-price">${{$listOfProducts[0]["price"]}} <del class="product-old-price">${{$listOfProducts[0]["price"] + 100}}</del></h4>
+							<h3 class="product-name"><a href="{{url('/product/showDetails/'. $products->getId())}}">{{$products->getName()}}</a></h3>
+							
+							<h4 class="product-price">${{$products->getPrice()}} <del class="product-old-price">${{$products->getPrice() + 100}}</del></h4>
+							
 						</div>
+						
 					</div>
+					@endforeach
 				</div>
 				<!-- /aside Widget -->
 			</div>
@@ -231,7 +237,7 @@
 
 				<!-- store products -->
 				<div class="row">
-					@foreach($listOfProducts as $product)
+					@foreach($listOfProducts["all"] as $product)
 					<!-- product -->
 					<div class="col-md-4 col-xs-6">
 						<div class="product">

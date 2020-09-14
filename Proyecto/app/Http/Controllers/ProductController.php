@@ -11,11 +11,12 @@ class ProductController extends Controller
     {
         $listOfProducts = []; //to be sent to the view
         if($sort == "lower_price"){
-          $listOfProducts =  Product::orderBy('price', 'ASC')->get(); //trae la busqueda en orden ascendente con orderBy
+          $listOfProducts["all"] =  Product::orderBy('price', 'ASC')->get(); //trae la busqueda en orden ascendente con orderBy
         }
         else{
-          $listOfProducts =  Product::orderBy('created_at', 'DESC')->get(); //trae la busqueda en orden ascendente con orderBy
+          $listOfProducts["all"] =  Product::orderBy('created_at', 'DESC')->get(); //trae la busqueda en orden ascendente con orderBy
         }
+        $listOfProducts["top"] = Product::orderBy('price', 'DESC')->get()->take(2);
         return view('product.showProducts')->with("listOfProducts", $listOfProducts);
     }
     public function showDetails($id)
