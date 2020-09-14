@@ -1,7 +1,6 @@
 <?php
 namespace App\Http\Controllers;
 //author: Ricardo Avendaño Peña
-use App\Comment;
 use Illuminate\Http\Request;
 use App\Product;
 use Illuminate\Support\Facades\Redis;
@@ -18,10 +17,10 @@ class ProductController extends Controller
     {
                     
         $product =  Product::findOrFail($id);
-        $product["comments"] =  Comment::where('product_id',$id)->get();
-        $product["pgnteComments"] =  Comment::where('product_id',$id)->paginate(3);
-        $product["avgRating"] = round(Comment::where('product_id',$id)->avg('rating'), 1);
-        $product["ttlRating"]= Comment::where('product_id',$id)->count();
+        $product["comments"] =  $product->comments()->where('product_id',$id)->get();
+        $product["pgnteComments"] =  $product->comments()->where('product_id',$id)->paginate(3);
+        $product["avgRating"] = round($product->comments()->where('product_id',$id)->avg('rating'), 1);
+        $product["ttlRating"]= $product->comments()->where('product_id',$id)->count();
         return view('product.showDetails')->with("product", $product);
 
     }
