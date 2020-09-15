@@ -79,7 +79,7 @@
 				</div>
 				<div class="order-col">
 					<div><strong>TOTAL</strong></div>
-					<div><strong class="order-total">$2940.00</strong></div>
+					<div><strong class="order-total">${{$data["total"]}}</strong></div>
 				</div>
 				<div class="order-products">
 					<div class="order-col">
