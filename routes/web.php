@@ -36,8 +36,8 @@ Route::get('/checkout/client', 'ClientController@show')->name("checkout.client")
 Route::post('/checkout/client', 'ClientController@save')->name("checkout.client.save");
 //Route::get('/checkout/shipping', 'ShippingController@show')->name("checkout.shipping");
 Route::post('/checkout/shipping', 'ShippingController@save')->name("checkout.shipping.save");
-Route::get('/checkout/order', 'orderController@show')->name("checkout.order");
-Route::post('/checkout/order', 'orderController@save')->name("checkout.order.save");
+Route::get('/checkout/order', 'OrderController@show')->name("checkout.order");
+Route::post('/checkout/order', 'OrderController@save')->name("checkout.order.save");
 //Catalogue
 Route::get('/catalogue/showCatalogues', 'CatalogueController@show')->name("catalogue.showCatalogues");
 Route::get('/catalogue/showDetails/{id}', 'CatalogueController@showDetails')->name("catalogue.showCataloguesDetails");
