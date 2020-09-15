@@ -13,6 +13,8 @@
                 <li><a href="{{url('/product/show/last')}}">Products</a></li>
                 <li><a href="{{url('/contact')}}">Contact</a></li>
                 <li><a href= "{{ url('/catalogue/showCatalogues')}}" >Catalogues</a></li>
+                <li class="active"><a href="#">Cart</a></li>
+
             </ul>
             <!-- /NAV -->
         </div>
@@ -23,23 +25,7 @@
 <!-- /NAVIGATION -->
 
 <!-- BREADCRUMB -->
-<div id="breadcrumb" class="section">
-    <!-- container -->
-    <div class="container">
-        <!-- row -->
-        <div class="row">
-            <div class="col-md-12">
-                <h3 class="breadcrumb-header">Checkout</h3>
-                <ul class="breadcrumb-tree">
-                    <li><a href="#">Home</a></li>
-                    <li class="active">Checkout</li>
-                </ul>
-            </div>
-        </div>
-        <!-- /row -->
-    </div>
-    <!-- /container -->
-</div>
+
 <!-- /BREADCRUMB -->
 
 <!-- SECTION -->
@@ -49,8 +35,16 @@
 
         <!-- Order Details -->
         <div class="col-md-7 order-details" style="margin-left: 20%">
+            <div>
+                <form style="justify-content: space-between" action="{{ route('product.removeCart') }}">
+                    @csrf
+                <button type="submit" class="add-to-cart-btn"><i class="fa fa-trash"></i> Delete Cart</button>
+                </form>
+            </div>
 
             <div class="order-summary">
+
+
                 <div class="order-col">
                     <div><strong>PRODUCT</strong></div>
                     <div><strong>TOTAL</strong></div>
@@ -65,11 +59,13 @@
                     <div><strong>TOTAL:</strong></div>
                     <div><strong class="order-total">${{$product->getPrice()* $data["cantidad"][$product->getId()] }}</strong></div>
                 </div>
+
                 @endforeach
                 <br /><br />
                 <div class="order-col">
                     <div><strong>TOTAL:</strong></div>
                     <div><strong class="order-total">${{$data["precio_total"]}}</strong></div>
+
                 </div>
 
                 </div>
@@ -80,6 +76,7 @@
                 @csrf
                 <button type="submit">Buy</button>
                 <a class="red-btn" href="{{url('/index')}}" >Back</a
+
             </form>
 
             </div>

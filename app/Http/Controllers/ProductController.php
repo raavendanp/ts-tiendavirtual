@@ -26,19 +26,22 @@ class ProductController extends Controller
 
     public function addToCart($id, Request $request)
     {
-        $data = []; //to be sent to the view
+
         $quantity = $request->quantity;
         $products = $request->session()->get("products");
         $products[$id] = $quantity;
         $request->session()->put('products', $products);
-        return back();
+
+        return back()->with('success', 'Item created successfully!');
     }
 
     public function removeCart(Request $request)
     {
+
         $request->session()->forget('products');
         return redirect()->route('pages.index');
     }
+
 
     public function cart(Request $request)
     {
