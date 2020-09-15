@@ -9,6 +9,9 @@ use App\Cart;
 class Item extends Model
 {
     //attributes id, product_id, cart_id, quantity created_at, updated_at
+    protected $fillable = [
+        'quantity', 'product_id', 'cart_id',
+    ];
 
     public function getId()
     {

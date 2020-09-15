@@ -18,9 +18,9 @@
                         @csrf
                         <button type="submit">Buy</button>
                     </form>
-                    <form action="{{ route('pages.index') }}">
+                    
                         <a class="red-btn" href="{{url('/index')}}">Back</a>
-                    </form>
+                    
                 </ul>
             </div>
         </div>

@@ -54,22 +54,24 @@
 		<!-- Order Details -->
 		<div class="col-md-7 order-details" style="margin-left: 20%">
 			<div class="section-title form-center" style=" text-align: center">
-				<h3 class="title">Your Order</h3>
+			<h3 class="title">Your Order Cart id = {{$data["cart_id"]}}</h3>
 			</div>
 			<div class="order-summary">
 				<div class="order-col">
 					<div><strong>PRODUCT</strong></div>
 					<div><strong>TOTAL</strong></div>
 				</div>
-				<div class="order-products">
-					<div class="order-col">
-						<div>1x Product Name Goes Here</div>
-						<div>$980.00</div>
-					</div>
-					<div class="order-col">
-						<div>2x Product Name Goes Here</div>
-						<div>$980.00</div>
-					</div>
+					
+					@for($i = 0; $i < $data["total_item"];$i++)
+					<div class="order-products">
+						<div class="order-col">
+						<div>{{$data["item"]["name"][$i]}} * {{$data["item"]["qnty"][$i]}}</div>
+						<div>{{$data["item"]["price"][$i]}}</div>
+						
+						</div>
+					@endfor
+					
+					
 				</div>
 				<div class="order-col">
 					<div><strong>Shiping</strong></div>
@@ -135,6 +137,7 @@
 						<input type='hidden' name='client_id' value={{$data["client_id"]}} />
 						<input type='hidden' name='shipping_id' value={{$data["shipping_id"]}} />
 						<input type='hidden' name='payment_method' value={{$data["payment_method"]}} />
+						<input type='hidden' name='cart_id' value="{{$data["cart_id"]}}" />
 						
 					<button style="margin-left:40%" type=submit class="primary-btn">Finish Order</button>
 				</form>

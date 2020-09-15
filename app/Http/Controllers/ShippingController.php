@@ -33,6 +33,12 @@ class ShippingController extends Controller
         $data["zip_code"] = $request->zip_code;
         $data["shipping_cost"] = $request->shipping_cost;
         $data["payment_method"] = $request->payment_method;
+        $data["item"]["name"] = $request->input('itemName.*');
+        $data["item"]["price"] = $request->input('itemPrice.*');
+        $data["item"]["qnty"] = $request->input('itemQnty.*');
+        $data["total"] = $request->total;
+        $data["total_item"] = $request->total_item;
+        $data["cart_id"] = $request->cart_id;
         
         return view('checkout.order')->with('data',$data);
     }

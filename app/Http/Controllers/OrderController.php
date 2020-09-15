@@ -15,8 +15,8 @@ class OrderController extends Controller
     public function save(Request $request)
     {
         Order::validate($request);
-        Order::create($request->only(["payment_method", "shipping_id","client_id"]));
-        return redirect('/checkout/client');
+        Order::create($request->only(["payment_method", "shipping_id","client_id","cart_id"]));
+        return redirect('/index');
     }
    
 

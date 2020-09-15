@@ -22,6 +22,14 @@ class ClientController extends Controller
         $clientInfo["last_name"] = $request->last_name;
         $clientInfo["email"] = $request->email;
         $clientInfo["telephone"] = $request->telephone;
+        $clientInfo["item"]["name"] = $request->input('itemName.*');
+        $clientInfo["item"]["price"] = $request->input('itemPrice.*');
+        $clientInfo["item"]["qnty"] = $request->input('itemQnty.*');
+        $clientInfo["total"] = $request->total;
+        $clientInfo["total_item"] = $request->total_item;
+        $clientInfo["cart_id"] = $request->cart_id;
+        
+       
         
         return view('checkout.shipping')->with(['clientInfo'=> $clientInfo]);
     }

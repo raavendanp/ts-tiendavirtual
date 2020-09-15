@@ -50,7 +50,7 @@ class ProductController extends Controller
             $data["cantidad"] =  Session::get('products');
             $data["precio_total"] = 0;
             foreach($data["products"] as $product){
-                $data["precio_total"] = $product->getPrice() * $data["cantidad"][$product->getId()];
+                $data["precio_total"] = $data["precio_total"] + $product->getPrice() * $data["cantidad"][$product->getId()];
 
             }
             return view('product.cart')->with("data", $data);
@@ -59,7 +59,7 @@ class ProductController extends Controller
         return redirect()->route('pages.index');
     }
 
-    public function buy(Request $request)
+   public function buy(Request $request)
     {
         $cart = new Cart();
         $cart->setTotal("0");
@@ -87,12 +87,11 @@ class ProductController extends Controller
             $cart->setTotal($precioTotal);
             $cart->save();
 
-            $request->session()->forget('products');
+            //$request->session()->forget('products');
         }
 
         return view('checkout.client')->with("cartInfo", $cartInfo);
     }
-
 
     public function showDetails($id)
     {

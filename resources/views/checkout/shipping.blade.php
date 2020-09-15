@@ -112,23 +112,31 @@
 							<div><strong>PRODUCT</strong></div>
 							<div><strong>TOTAL</strong></div>
 						</div>
-						<div class="order-products">
-							<div class="order-col">
-								<div>1x Product Name Goes Here</div>
-								<div>$980.00</div>
-							</div>
-							<div class="order-col">
-								<div>2x Product Name Goes Here</div>
-								<div>$980.00</div>
-							</div>
+							@for($i = 0; $i < $clientInfo["total_item"];$i++)
+							<div class="order-products">
+								<div class="order-col">
+									<input type='hidden' name='itemName[]' value="{{$clientInfo["item"]["name"][$i]}}" />
+								<input type='hidden' name='itemPrice[]' value="{{$clientInfo["item"]["price"][$i]}}" />
+								<input type='hidden' name='itemQnty[]' value="{{$clientInfo["item"]["qnty"][$i]}}" />
+								<div>{{$clientInfo["item"]["name"][$i]}} * {{$clientInfo["item"]["qnty"][$i]}}</div>
+								<div>{{$clientInfo["item"]["price"][$i]}}</div>
+								
+								</div>
+							@endfor
+							<input type='hidden' name='total_item' value="{{$clientInfo["total_item"]}}" />
+							<input type='hidden' name='total' value="{{$clientInfo["total"]}}" />
+							<input type='hidden' name='cart_id' value="{{$clientInfo["cart_id"]}}" />
+							
 						</div>
+							
+						
 						<div class="order-col">
 							<div>Shiping</div>
 							<div><strong>FREE</strong></div>
 						</div>
 						<div class="order-col">
 							<div><strong>TOTAL</strong></div>
-							<div><strong class="order-total">$2940.00</strong></div>
+						<div><strong class="order-total">${{$clientInfo["total"]}}</strong></div>
 						</div>
 					</div>
 					<strong>PAYMENT METHOD</strong>
@@ -137,7 +145,7 @@
 						</div>
 						<div class="input-radio">
 
-							<input type="radio" name="payment_method" id="payment-1" value="Direct Bank Transfer">
+							<input type="radio" name="payment_method" id="payment-1" value="Direct-Bank-Transfer">
 							<label for="payment-1">
 								<span></span>
 								Direct Bank Transfer
@@ -147,7 +155,7 @@
 							</div>
 						</div>
 						<div class="input-radio">
-							<input type="radio" name="payment_method" id="payment-2" value="Delivery Against Payment">
+							<input type="radio" name="payment_method" id="payment-2" value="Delivery-Against-Payment">
 							<label for="payment-2">
 								<span></span>
 								Delivery Against Payment
@@ -157,7 +165,7 @@
 							</div>
 						</div>
 						<div class="input-radio">
-							<input type="radio" name="payment_method" id="payment-3" value="Paypal System">
+							<input type="radio" name="payment_method" id="payment-3" value="Paypal-System">
 							<label for="payment-3">
 								<span></span>
 								Paypal System

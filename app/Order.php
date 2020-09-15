@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class Order extends Model
 {
     protected $fillable = [
-        'payment_method', 'shipping_id', 'client_id',
+        'payment_method', 'shipping_id', 'client_id', 'cart_id',
     ];
 
     public function getId()
@@ -41,6 +41,10 @@ class Order extends Model
     public function client()
     {
         return $this->hasOne('App\Client');
+    }
+    public function cart()
+    {
+        return $this->hasOne('App\Cart');
     }
 }
 
