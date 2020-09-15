@@ -10,13 +10,10 @@
 		<div id="responsive-nav">
 			<!-- NAV -->
 			<ul class="main-nav nav navbar-nav">
-				<li class="active"><a href="#">Home</a></li>
-				<li><a href="#">Hot Deals</a></li>
-				<li><a href="#">Categories</a></li>
-				<li><a href="#">Laptops</a></li>
-				<li><a href="#">Smartphones</a></li>
-				<li><a href="#">Cameras</a></li>
-				<li><a href="#">Accessories</a></li>
+                <li><a href="{{url('/index')}}">Home</a></li>
+                <li><a href="{{url('/product/show/last')}}">Products</a></li>
+                <li><a href="{{url('/contact')}}">Contact</a></li>
+                <li><a href= "{{ url('/catalogue/showCatalogues')}}" >Catalogues</a></li>
 			</ul>
 			<!-- /NAV -->
 		</div>
@@ -60,7 +57,7 @@
 						<div class="section-title">
 							<h3 class="title">Buyer Information</h3>
 						</div>
-						
+
 							@csrf
 							<div class="form-group">
 								<input class="input" type="text" name="first_name" placeholder="First Name" value="{{ old('first_name') }}" required>
@@ -74,9 +71,9 @@
 							<div class="form-group">
 								<input class="input" type="text" name="telephone" placeholder="Telephone" value="{{ old('telephone') }}">
 							</div>
-							
+
 							<button style="margin-left:40%" type=submit class="primary-btn">Continue</button>
-						
+
 						<div class="form-group">
 							<div class="input-checkbox">
 								<input type="checkbox" id="create-account">
@@ -102,7 +99,7 @@
 							 <input type='hidden' name='itemName[]' value="{{$product->getName()}}" />
 							 <input type='hidden' name='itemPrice[]' value="{{$product->getPrice()}}" />
 							 <input type='hidden' name='itemQnty[]' value="{{$product["cantidad"]}}" />
-							
+
 							<div>{{$product->getName()}} * {{$product["cantidad"]}}</div>
 							<div>{{$product->getPrice()}}</div>
 							</div>
@@ -120,7 +117,7 @@
 							<div><strong class="order-total">${{$cartInfo["total"]}}</strong></div>
 						</div>
 					</div>
-					
+
 				</div>
 				<!-- /Order Details -->
 			</div>

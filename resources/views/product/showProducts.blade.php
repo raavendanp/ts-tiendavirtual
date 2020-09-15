@@ -195,7 +195,7 @@
 				<div class="aside">
 					<h3 class="aside-title">Top selling</h3>
 					@foreach($listOfProducts["top"] as $products)
-						
+
 					<div class="product-widget">
 						<div class="product-img">
 							<img src="{{asset('bootstrap/img/product01.png')}}" alt="">
@@ -203,11 +203,11 @@
 						<div class="product-body">
 						<p class="product-category">{{$products->catalogues()->where('id', $products->getId())->get()}}</p>
 							<h3 class="product-name"><a href="{{url('/product/showDetails/'. $products->getId())}}">{{$products->getName()}}</a></h3>
-							
+
 							<h4 class="product-price">${{$products->getPrice()}} <del class="product-old-price">${{$products->getPrice() + 100}}</del></h4>
-							
+
 						</div>
-						
+
 					</div>
 					@endforeach
 				</div>
@@ -222,10 +222,10 @@
 					<div class="store-sort">
 						<label>
 							Sort By:
-							
+
 							<button class="input-select"><a href="{{url('/product/show/last')}}">Last</button>
 							<button class = "input-select"><a href="{{url('/product/show/lower_price')}}">Low Price</button>
-							
+
 						</label>
 					</div>
 					<ul class="store-grid">
@@ -244,7 +244,7 @@
 							<div class="product-img">
 								<img src="{{asset('bootstrap/img/product01.png')}}" alt="">
 								<div class="product-label">
-									
+
 									<span class="new">NEW</span>
 								</div>
 							</div>
@@ -253,11 +253,11 @@
 								<h3 class="product-name"><a href="{{url('/product/showDetails/'. $product->getId() )}}">{{$product->getName()}}</a></h3>
 								<h4 class="product-price">${{$product->getPrice()}} <del class="product-old-price">${{$product->getPrice() + 100}}</del></h4>
 								<div class="product-rating">
-									
-									@for($i = 1;$i<=5;$i++) 
-										@if($i-0.2 <=round($product->comments()->avg('rating'), 1)) 
+
+									@for($i = 1;$i<=5;$i++)
+										@if($i-0.2 <=round($product->comments()->avg('rating'), 1))
 											<i class="fa fa-star"></i>
-										@elseif($i-0.75 < round($product->comments()->avg('rating'), 1)) 
+										@elseif($i-0.75 < round($product->comments()->avg('rating'), 1))
 											<i class="fa fa-star-half-o"></i>
 										@else
 											<i class="fa fa-star-o"></i>
@@ -265,11 +265,19 @@
 									@endfor
 									<h4 class="product-price">{{$product->comments()->count()}} Reviews</h4>
 								</div>
-								
+
 							</div>
-							<div class="add-to-cart">
-								<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-							</div>
+                            <div class="add-to-cart">
+
+
+                                <form  action="{{ route('product.addToCart',['id'=>$product->getId()]) }}" method="POST">
+                                    @csrf
+                                    
+                                    <input type='hidden' name='quantity' value='1' />
+                                    <button type="submit" class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i>Add</button>
+
+                                </form>
+                            </div>
 						</div>
 					</div>
 					@endforeach
@@ -279,7 +287,7 @@
 				</div>
 				<!-- /store products -->
 
-				<!-- store bottom filter 
+				<!-- store bottom filter
 						<div class="store-filter clearfix">
 							<span class="store-qty">Showing 20-100 products</span>
 							<ul class="store-pagination">

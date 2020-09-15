@@ -61,17 +61,17 @@
 					<div><strong>PRODUCT</strong></div>
 					<div><strong>TOTAL</strong></div>
 				</div>
-					
+
 					@for($i = 0; $i < $data["total_item"];$i++)
 					<div class="order-products">
 						<div class="order-col">
 						<div>{{$data["item"]["name"][$i]}} * {{$data["item"]["qnty"][$i]}}</div>
 						<div>{{$data["item"]["price"][$i]}}</div>
-						
+
 						</div>
 					@endfor
-					
-					
+
+
 				</div>
 				<div class="order-col">
 					<div><strong>Shiping</strong></div>
@@ -133,12 +133,12 @@
 				</div>
 				<form method="POST" id="form1" action="{{ route('checkout.order.save') }}">
 					@csrf
-					
+
 						<input type='hidden' name='client_id' value={{$data["client_id"]}} />
 						<input type='hidden' name='shipping_id' value={{$data["shipping_id"]}} />
 						<input type='hidden' name='payment_method' value={{$data["payment_method"]}} />
 						<input type='hidden' name='cart_id' value="{{$data["cart_id"]}}" />
-						
+
 					<button style="margin-left:40%" type=submit class="primary-btn">Finish Order</button>
 				</form>
 			</div>

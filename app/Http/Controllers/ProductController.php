@@ -20,7 +20,7 @@ class ProductController extends Controller
             $listOfProducts["all"] =  Product::orderBy('created_at', 'DESC')->get();
         }
         $listOfProducts["top"] = Product::orderBy('price', 'DESC')->get()->take(2);
-        
+
         return view('product.showProducts')->with("listOfProducts", $listOfProducts);
     }
 
@@ -71,7 +71,7 @@ class ProductController extends Controller
         if ($products) {
             $keys = array_keys($products);
             for ($i = 0; $i < count($keys); $i++) {
-                
+
                 $item = new Item();
                 $item->setProductId($keys[$i]);
                 $item->setCartId($cart->getId());
@@ -87,7 +87,7 @@ class ProductController extends Controller
             $cart->setTotal($precioTotal);
             $cart->save();
 
-            $request->session()->forget('products');
+
         }
 
         return view('checkout.client')->with("cartInfo", $cartInfo);

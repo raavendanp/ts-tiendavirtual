@@ -10,13 +10,10 @@
 		<div id="responsive-nav">
 			<!-- NAV -->
 			<ul class="main-nav nav navbar-nav">
-				<li class="active"><a href="#">Home</a></li>
-				<li><a href="#">Hot Deals</a></li>
-				<li><a href="#">Categories</a></li>
-				<li><a href="#">Laptops</a></li>
-				<li><a href="#">Smartphones</a></li>
-				<li><a href="#">Cameras</a></li>
-				<li><a href="#">Accessories</a></li>
+                <li><a href="{{url('/index')}}">Home</a></li>
+                <li><a href="{{url('/product/show/last')}}">Products</a></li>
+                <li><a href="{{url('/contact')}}">Contact</a></li>
+                <li><a href= "{{ url('/catalogue/showCatalogues')}}" >Catalogues</a></li>
 			</ul>
 			<!-- /NAV -->
 		</div>
@@ -120,16 +117,16 @@
 								<input type='hidden' name='itemQnty[]' value="{{$clientInfo["item"]["qnty"][$i]}}" />
 								<div>{{$clientInfo["item"]["name"][$i]}} * {{$clientInfo["item"]["qnty"][$i]}}</div>
 								<div>{{$clientInfo["item"]["price"][$i]}}</div>
-								
+
 								</div>
 							@endfor
 							<input type='hidden' name='total_item' value="{{$clientInfo["total_item"]}}" />
 							<input type='hidden' name='total' value="{{$clientInfo["total"]}}" />
 							<input type='hidden' name='cart_id' value="{{$clientInfo["cart_id"]}}" />
-							
+
 						</div>
-							
-						
+
+
 						<div class="order-col">
 							<div>Shiping</div>
 							<div><strong>FREE</strong></div>
