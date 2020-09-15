@@ -269,7 +269,7 @@
                             <div class="add-to-cart">
 
 
-                                <form  action="{{ route('product.addToCart',['id'=>$product->getId()]) }}" method="POST">
+                                <form  action="{{ route('cart.addToCart',['id'=>$product->getId()]) }}" method="POST">
                                     @csrf
 
                                     <input type='hidden' name='quantity' value='1' />

@@ -92,7 +92,7 @@
 						<div class="col-md-3 clearfix">
 							<div class="header-ctn">
 								<!-- Cart -->
-                                <form action="{{ route('product.cart') }}">
+                                <form action="{{ route('cart.cart') }}">
                                         <button type="submit" class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i></button>
                                 </form>
 								<!-- /Cart -->

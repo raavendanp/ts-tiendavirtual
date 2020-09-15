@@ -36,7 +36,7 @@
         <!-- Order Details -->
         <div class="col-md-7 order-details" style="margin-left: 20%">
             <div>
-                <form style="justify-content: space-between" action="{{ route('product.removeCart') }}">
+                <form style="justify-content: space-between" action="{{ route('cart.removeCart') }}">
                     @csrf
                 <button type="submit" class="add-to-cart-btn"><i class="fa fa-trash"></i> Delete Cart</button>
                 </form>
@@ -72,7 +72,7 @@
 
 
 
-            <form style="justify-content: space-between" action="{{ route('product.buy') }}" method="POST">
+            <form style="justify-content: space-between" action="{{ route('cart.buy') }}" method="POST">
                 @csrf
                 <button type="submit">Buy</button>
                 <a class="red-btn" href="{{url('/index')}}" >Back</a
