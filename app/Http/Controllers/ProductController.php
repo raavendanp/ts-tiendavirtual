@@ -50,7 +50,7 @@ class ProductController extends Controller
             $data["cantidad"] =  Session::get('products');
             $data["precio_total"] = 0;
             foreach($data["products"] as $product){
-                $data["precio_total"] = $product->getPrice() * $data["cantidad"][$product->getId()];
+                $data["precio_total"] = $data["precio_total"]+$product->getPrice() * $data["cantidad"][$product->getId()];
 
             }
             return view('product.cart')->with("data", $data);
