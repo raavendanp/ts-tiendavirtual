@@ -56,23 +56,20 @@
 			<div class="section-title form-center" style=" text-align: center">
 			<h3 class="title">Your Order Cart id = {{$data["cart_id"]}}</h3>
 			</div>
-			<div class="order-summary">
+
+            <div class="order-summary">
 				<div class="order-col">
 					<div><strong>PRODUCT</strong></div>
 					<div><strong>TOTAL</strong></div>
 				</div>
-
 					@for($i = 0; $i < $data["total_item"];$i++)
-					<div class="order-products">
+                <div class="order-products">
 						<div class="order-col">
 						<div>{{$data["item"]["name"][$i]}} * {{$data["item"]["qnty"][$i]}}</div>
 						<div>{{$data["item"]["price"][$i]}}</div>
-
 						</div>
 					@endfor
-
-
-				</div>
+                </div>
 				<div class="order-col">
 					<div><strong>Shiping</strong></div>
 					<div><strong>FREE</strong></div>

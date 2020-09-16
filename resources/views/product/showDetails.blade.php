@@ -26,9 +26,8 @@
         <div id="responsive-nav">
             <!-- NAV -->
             <ul class="main-nav nav navbar-nav">
-                <li><a href="{{url('/index')}}">Home</a></li>
-                <li><a href="{{url('/product/create')}}">New Product</a></li>
-                <li class="active" ><a href="{{url('/product/show/last')}}">See Products</a></li>
+                <li ><a href="{{url('/index')}}">Home</a></li>
+                <li class="active">  <a href="{{url('/product/show/last')}}">Products</a></li>
                 <li ><a href="{{url('/contact')}}">Contact</a></li>
                 <li><a href= "{{ url('/catalogue/showCatalogues')}}" >Catalogues</a></li>
             </ul>
@@ -150,7 +149,7 @@
                         <div class="add-to-cart">
 
 
-                            <form action="{{ route('product.addToCart',['id'=>$product->getId()]) }}" method="POST">
+                            <form action="{{ route('cart.addToCart',['id'=>$product->getId()]) }}" method="POST">
                                 @csrf
                                 <div class="qty-label">
                                     Qty

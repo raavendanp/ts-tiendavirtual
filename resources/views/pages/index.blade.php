@@ -9,12 +9,9 @@
 			<!-- NAV -->
 			<ul class="main-nav nav navbar-nav">
                 <li class="active"><a href="{{url('/index')}}">Home</a></li>
-				<li><a href="{{url('/product/create')}}">New Product</a></li>
-				<li><a href="{{url('/product/show/last')}}">See Products</a></li>
-				<li><a href="{{url('/contact')}}">Contact</a></li>
+                <li><a href="{{url('/product/show/last')}}">Products</a></li>
+                <li><a href="{{url('/contact')}}">Contact</a></li>
                 <li><a href= "{{ url('/catalogue/showCatalogues')}}" >Catalogues</a></li>
-                <li><a href= "{{ url('/cart/carts')}}" >Cart</a></li>
-                <li><a href= "{{ url('/cart/remove')}}" >Remove Cart</a></li>
 
 
             </ul>

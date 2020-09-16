@@ -9,9 +9,9 @@
         <div id="responsive-nav">
             <!-- NAV -->
             <ul class="main-nav nav navbar-nav">
-                <li><a href="{{url('/index')}}">Home</a></li>
-                <li><a href="{{url('/product/show/last')}}">Products</a></li>
-                <li><a href="{{url('/contact')}}">Contact</a></li>
+                <li ><a href="{{url('/index')}}">Home</a></li>
+                <li class="active">  <a href="{{url('/product/show/last')}}">Products</a></li>
+                <li ><a href="{{url('/contact')}}">Contact</a></li>
                 <li><a href= "{{ url('/catalogue/showCatalogues')}}" >Catalogues</a></li>
             </ul>
             <!-- /NAV -->
@@ -30,11 +30,10 @@
 		<div class="row">
 			<div class="col-md-12">
 				<ul class="breadcrumb-tree">
-					<li><a href="#">Home</a></li>
-					<li><a href="#">All Categories</a></li>
+					<li><a href="{{url('/index')}}">Home</a></li>
+					<li><a href="{{ url('/catalogue/showCatalogues')}}">All Categories</a></li>
 					<li><a href="#">Accessories</a></li>
 					<li><a href="#">Headphones</a></li>
-					<li class="active">Product name goes here</li>
 				</ul>
 			</div>
 		</div>
@@ -53,7 +52,7 @@
                 <div class="col-md-8">
                     @include('util.message')
                     <div class="card">
-                        
+
                         <div class="card-body">
                         @if($errors->any())
                         <ul id="errors">
@@ -85,8 +84,8 @@
                                     <input type='hidden' name='catalogue_id' value='{{$catalogueId}}' />
                                 </div>
                             </div>
-                        
-        
+
+
                             <div class="text-center">
                             <a class="red-btn" href="{{url('/index')}}">Back</a>
                             <button type="submit">Create</button>
