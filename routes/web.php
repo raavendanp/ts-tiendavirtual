@@ -19,7 +19,6 @@ Route::get('/contact', 'HomeController@contact')->name("pages.contact");
 //Products
 Route::get('/product/show/{sort}', 'ProductController@show')->name("product.showProducts");
 Route::get('/product/showDetails/{id}/', 'ProductController@showDetails')->name("product.showDetails");
-Route::get('/catalogue/{catalogue_id}/createProduct', 'ProductController@create')->name("product.createProducts");
 Route::post('/product/save', 'CommentController@save')->name("comment.save");
 Route::post('/product/create', 'ProductController@save')->name("product.save");
 Route::get('/product/save', 'HomeController@goindex');
@@ -40,6 +39,7 @@ Route::get('/checkout/order', 'orderController@show')->name("checkout.order");
 Route::post('/checkout/order', 'orderController@save')->name("checkout.order.save");
 //Catalogue
 Route::get('/catalogue/showCatalogues', 'CatalogueController@show')->name("catalogue.showCatalogues");
+Route::get('/catalogue/{catalogue_id}/createProduct', 'ProductController@create')->name("product.createProducts");
 Route::get('/catalogue/showDetails/{id}', 'CatalogueController@showDetails')->name("catalogue.showCataloguesDetails");
 Route::get('/catalogue/create', 'CatalogueController@create')->name("catalogue.createCatalogues");
 Route::post('/catalogue/save', 'CatalogueController@save')->name("catalogue.save");
