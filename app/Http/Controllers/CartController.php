@@ -31,9 +31,8 @@ class CartController extends Controller
             $data["products"] = $productsModels;
             $data["cantidad"] =  Session::get('products');
             $data["precio_total"] = 0;
-            foreach($data["products"] as $product){
-                $data["precio_total"] = $data["precio_total"]+$product->getPrice() * $data["cantidad"][$product->getId()];
-
+            foreach ($data["products"] as $product) {
+                $data["precio_total"] = $data["precio_total"] + $product->getPrice() * $data["cantidad"][$product->getId()];
             }
             return view('cart.cart')->with("data", $data);
         }
@@ -74,11 +73,8 @@ class CartController extends Controller
             $cartInfo["total"] = $precioTotal;
             $cart->setTotal($precioTotal);
             $cart->save();
-
-
         }
 
         return view('checkout.client')->with("cartInfo", $cartInfo);
     }
-
 }

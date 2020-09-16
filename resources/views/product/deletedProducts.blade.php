@@ -12,7 +12,7 @@
                         <br><br>
                     </div>
                     <div class="text-center">
-                      <a class="btn btn-primary" href="{{url('/product/show/last')}}">Products</a>
+                      <a class="btn btn-primary" href="{{url('/product/show/last/all')}}">Products</a>
                       <a class="btn btn-primary" href="{{url('/product/create')}}">Create</a>
                       
                     

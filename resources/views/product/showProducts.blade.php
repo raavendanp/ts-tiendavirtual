@@ -8,10 +8,10 @@
 		<div id="responsive-nav">
 			<!-- NAV -->
 			<ul class="main-nav nav navbar-nav">
-                <li ><a href="{{url('/index')}}">Home</a></li>
-                <li class="active">  <a href="{{url('/product/show/last')}}">Products</a></li>
-                <li ><a href="{{url('/contact')}}">Contact</a></li>
-                <li><a href= "{{ url('/catalogue/showCatalogues')}}" >Catalogues</a></li>
+				<li><a href="{{url('/index')}}">Home</a></li>
+				<li class="active"> <a href="{{url('/product/show/last/all')}}">Products</a></li>
+				<li><a href="{{url('/contact')}}">Contact</a></li>
+				<li><a href="{{ url('/catalogue/showCatalogues')}}">Catalogues</a></li>
 			</ul>
 			<!-- /NAV -->
 		</div>
@@ -20,29 +20,6 @@
 	<!-- /container -->
 </nav>
 <!-- /NAVIGATION -->
-
-<!-- BREADCRUMB -->
-<div id="breadcrumb" class="section">
-	<!-- container -->
-	<div class="container">
-		<!-- row -->
-		<div class="row">
-			<div class="col-md-12">
-				<ul class="breadcrumb-tree">
-					<li><a href="#">Home</a></li>
-					<li><a href="#">All Categories</a></li>
-					<li><a href="#">Accessories</a></li>
-					<li><a href="#">Headphones</a></li>
-					<li class="active">Product name goes here</li>
-				</ul>
-			</div>
-		</div>
-		<!-- /row -->
-	</div>
-	<!-- /container -->
-</div>
-<!-- /BREADCRUMB -->
-
 
 <!-- SECTION -->
 <div class="section">
@@ -200,7 +177,7 @@
 							<img src="{{asset('bootstrap/img/product01.png')}}" alt="">
 						</div>
 						<div class="product-body">
-						<p class="product-category">{{$products->catalogues->getName()}}</p>
+							<p class="product-category">{{$products->catalogues->getName()}}</p>
 							<h3 class="product-name"><a href="{{url('/product/showDetails/'. $products->getId())}}">{{$products->getName()}}</a></h3>
 
 							<h4 class="product-price">${{$products->getPrice()}} <del class="product-old-price">${{$products->getPrice() + 100}}</del></h4>
@@ -222,8 +199,8 @@
 						<label>
 							Sort By:
 
-							<button class="input-select"><a href="{{url('/product/show/last')}}">Last</button>
-							<button class = "input-select"><a href="{{url('/product/show/lower_price')}}">Low Price</button>
+							<a class="red-btn" href="{{url('/product/show/last/all')}}">Last</a>
+							<a class="red-btn" href="{{url('/product/show/lower_price/all')}}">Low Price</a>
 
 						</label>
 					</div>
@@ -236,7 +213,7 @@
 
 				<!-- store products -->
 				<div class="row">
-					
+
 					@foreach($listOfProducts["all"] as $product)
 					<!-- product -->
 					<div class="col-md-4 col-xs-6">
@@ -254,30 +231,29 @@
 								<h4 class="product-price">${{$product->getPrice()}} <del class="product-old-price">${{$product->getPrice() + 100}}</del></h4>
 								<div class="product-rating">
 
-									@for($i = 1;$i<=5;$i++)
-										@if($i-0.2 <=round($product->comments()->avg('rating'), 1))
-											<i class="fa fa-star"></i>
+									@for($i = 1;$i<=5;$i++) @if($i-0.2 <=round($product->comments()->avg('rating'), 1))
+										<i class="fa fa-star"></i>
 										@elseif($i-0.75 < round($product->comments()->avg('rating'), 1))
 											<i class="fa fa-star-half-o"></i>
-										@else
+											@else
 											<i class="fa fa-star-o"></i>
-										@endif
-									@endfor
-									<h4 class="product-price">{{$product->comments()->count()}} Reviews</h4>
+											@endif
+											@endfor
+											<h4 class="product-price">{{$product->comments()->count()}} Reviews</h4>
 								</div>
 
 							</div>
-                            <div class="add-to-cart">
+							<div class="add-to-cart">
 
 
-                                <form  action="{{ route('cart.addToCart',['id'=>$product->getId()]) }}" method="POST">
-                                    @csrf
+								<form action="{{ route('cart.addToCart',['id'=>$product->getId()]) }}" method="POST">
+									@csrf
 
-                                    <input type='hidden' name='quantity' value='1' />
-                                    <button type="submit" class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i>Add</button>
+									<input type='hidden' name='quantity' value='1' />
+									<button type="submit" class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i>Add</button>
 
-                                </form>
-                            </div>
+								</form>
+							</div>
 						</div>
 					</div>
 					@endforeach

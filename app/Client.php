@@ -59,5 +59,8 @@ class Client extends Model
 
         ]);
     }
+    public function orders(){
+        return $this->belongsTo(Order::class);
+    }
 }
 

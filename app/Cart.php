@@ -30,10 +30,6 @@ class Cart extends Model
     {
         $this->attributes['total'] = $total;
     }
-
-    public function comments(){
-        return $this->hasMany(Comment::class);
-    }
     public function items(){
         return $this->hasMany(Item::class);
     }

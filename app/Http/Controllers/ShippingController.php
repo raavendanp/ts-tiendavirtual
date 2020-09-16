@@ -1,7 +1,7 @@
 <?php
 //author: Ricardo Avendaño Peña
 namespace App\Http\Controllers;
-use App\Client;
+
 use App\Shipping;
 use Illuminate\Http\Request;
 
@@ -17,14 +17,14 @@ class ShippingController extends Controller
     {
         $data = [];
         Shipping::validate($request);
-        
-        Shipping::create($request->only(["adress","city", "country", "state", "zip_code","details","shipping_cost"]));
+
+        Shipping::create($request->only(["adress", "city", "country", "state", "zip_code", "details", "shipping_cost"]));
+        $data["shipping_id"] = Shipping::all()->last()->getId();
         $data["client_id"] = $request->client_id;
         $data["first_name"] = $request->first_name;
         $data["last_name"] = $request->last_name;
         $data["email"] = $request->email;
         $data["telephone"] = $request->telephone;
-        $data["shipping_id"] = Shipping::all()->last()->getId();
         $data["adress"] = $request->adress;
         $data["country"] = $request->country;
         $data["city"] = $request->city;
@@ -39,7 +39,7 @@ class ShippingController extends Controller
         $data["total"] = $request->total;
         $data["total_item"] = $request->total_item;
         $data["cart_id"] = $request->cart_id;
-        
-        return view('checkout.order')->with('data',$data);
+
+        return view('checkout.order')->with('data', $data);
     }
 }

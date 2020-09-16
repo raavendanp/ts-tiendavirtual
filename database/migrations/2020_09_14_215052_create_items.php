@@ -17,9 +17,9 @@ class CreateItems extends Migration
             $table->id();
             $table->integer('quantity');
             $table->bigInteger('product_id')->unsigned();
-            $table->foreign('product_id')->references('id')->on('products');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');;
             $table->bigInteger('cart_id')->unsigned();
-            $table->foreign('cart_id')->references('id')->on('carts');
+            $table->foreign('cart_id')->references('id')->on('carts')->onDelete('cascade');;
             $table->timestamps();
         });
     }

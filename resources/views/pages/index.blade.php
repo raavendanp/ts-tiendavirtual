@@ -9,7 +9,7 @@
 			<!-- NAV -->
 			<ul class="main-nav nav navbar-nav">
                 <li class="active"><a href="{{url('/index')}}">Home</a></li>
-                <li><a href="{{url('/product/show/last')}}">Products</a></li>
+                <li><a href="{{url('/product/show/last/all')}}">Products</a></li>
                 <li><a href="{{url('/contact')}}">Contact</a></li>
                 <li><a href= "{{ url('/catalogue/showCatalogues')}}" >Catalogues</a></li>
 
@@ -22,28 +22,6 @@
 	<!-- /container -->
 </nav>
 <!-- /NAVIGATION -->
-
-<!-- BREADCRUMB -->
-<div id="breadcrumb" class="section">
-	<!-- container -->
-	<div class="container">
-		<!-- row -->
-		<div class="row">
-			<div class="col-md-12">
-				<ul class="breadcrumb-tree">
-					<li><a href="#">Home</a></li>
-					<li><a href="#">All Categories</a></li>
-					<li><a href="#">Accessories</a></li>
-					<li><a href="#">Headphones</a></li>
-					<li class="active">Product name goes here</li>
-				</ul>
-			</div>
-		</div>
-		<!-- /row -->
-	</div>
-	<!-- /container -->
-</div>
-<!-- /BREADCRUMB -->
 
 <div class="container">
     <div class="row justify-content-center">

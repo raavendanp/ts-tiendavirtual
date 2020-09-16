@@ -10,9 +10,9 @@
             <!-- NAV -->
             <ul class="main-nav nav navbar-nav">
                 <li><a href="{{url('/index')}}">Home</a></li>
-                <li><a href="{{url('/product/show/last')}}">Products</a></li>
+                <li><a href="{{url('/product/show/last/all')}}">Products</a></li>
                 <li><a href="{{url('/contact')}}">Contact</a></li>
-                <li><a href= "{{ url('/catalogue/showCatalogues')}}" >Catalogues</a></li>
+                <li><a href="{{ url('/catalogue/showCatalogues')}}">Catalogues</a></li>
                 <li class="active"><a href="#">Cart</a></li>
 
             </ul>
@@ -24,10 +24,6 @@
 </nav>
 <!-- /NAVIGATION -->
 
-<!-- BREADCRUMB -->
-
-<!-- /BREADCRUMB -->
-
 <!-- SECTION -->
 <div class="section">
     <!-- container -->
@@ -38,7 +34,7 @@
             <div>
                 <form style="justify-content: space-between" action="{{ route('cart.removeCart') }}">
                     @csrf
-                <button type="submit" class="add-to-cart-btn"><i class="fa fa-trash"></i> Delete Cart</button>
+                    <button type="submit" class="add-to-cart-btn"><i class="fa fa-trash"></i> Delete Cart</button>
                 </form>
             </div>
 
@@ -68,24 +64,20 @@
 
                 </div>
 
-                </div>
+            </div>
 
 
 
             <form style="justify-content: space-between" action="{{ route('cart.buy') }}" method="POST">
                 @csrf
                 <button type="submit">Buy</button>
-                <a class="red-btn" href="{{url('/index')}}" >Back</a
-
+                <a class="red-btn" href="{{url('/index')}}">Back</a>
             </form>
-
-            </div>
         </div>
         <!-- /Order Details -->
-    </div>
+    </div> 
+
     <!-- /container -->
 </div>
 <!-- /SECTION -->
 @endsection
-
-

@@ -11,17 +11,15 @@ use Illuminate\Support\Facades\Session;
 
 class ProductController extends Controller
 {
-    public function show($sort,$catalogue)
+    public function show($sort)
     {
         $listOfProducts = []; //to be sent to the view
         if ($sort == "lower_price") {
             $listOfProducts["all"] =  Product::orderBy('price', 'ASC')->get(); //trae la busqueda en orden ascendente con orderBy
-            
         } else {
             $listOfProducts["all"] =  Product::orderBy('created_at', 'DESC')->get();
         }
         $listOfProducts["top"] = Product::orderBy('price', 'DESC')->get()->take(2);
-        $listOfProducts["alls"][1] = $listOfProducts["all"][0]->catalogues()->where('id', $catalogue)->get();
         
         return view('product.showProducts')->with("listOfProducts", $listOfProducts);
     }
@@ -52,7 +50,7 @@ class ProductController extends Controller
             $data["cantidad"] =  Session::get('products');
             $data["precio_total"] = 0;
             foreach($data["products"] as $product){
-                $data["precio_total"] = $data["precio_total"] + $product->getPrice() * $data["cantidad"][$product->getId()];
+                $data["precio_total"] = $product->getPrice() * $data["cantidad"][$product->getId()];
 
             }
             return view('product.cart')->with("data", $data);
@@ -61,38 +59,34 @@ class ProductController extends Controller
         return redirect()->route('pages.index');
     }
 
-   public function buy(Request $request)
+    public function buy(Request $request)
     {
         $cart = new Cart();
         $cart->setTotal("0");
         $cart->save();
-        $cartInfo = [];
+
         $precioTotal = 0;
-        $cartInfo["cart_id"] = $cart->getId();
+
         $products = $request->session()->get("products");
         if ($products) {
             $keys = array_keys($products);
             for ($i = 0; $i < count($keys); $i++) {
-                
                 $item = new Item();
                 $item->setProductId($keys[$i]);
                 $item->setCartId($cart->getId());
                 $item->setQuantity($products[$keys[$i]]);
                 $item->save();
                 $productActual = Product::find($keys[$i]);
-                $cartInfo["item"][$i] = Product::find($keys[$i]);
-                $cartInfo["item"][$i]["cantidad"] =  $products[$keys[$i]];
                 $precioTotal = $precioTotal + $productActual->getPrice() * $products[$keys[$i]];
             }
-            $cartInfo["total_item"] = $i;
-            $cartInfo["total"] = $precioTotal;
+
             $cart->setTotal($precioTotal);
             $cart->save();
 
-            //$request->session()->forget('products');
+            $request->session()->forget('products');
         }
 
-        return view('checkout.client')->with("cartInfo", $cartInfo);
+        return redirect()->route('pages.index');
     }
 
     public function showDetails($id)

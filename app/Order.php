@@ -46,5 +46,9 @@ class Order extends Model
     {
         return $this->hasOne('App\Cart');
     }
+    public function shipping()
+    {
+        return $this->hasOne('App\Shipping');
+    }
 }
 
