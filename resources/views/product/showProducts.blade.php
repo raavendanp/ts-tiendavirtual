@@ -201,7 +201,7 @@
 							<img src="{{asset('bootstrap/img/product01.png')}}" alt="">
 						</div>
 						<div class="product-body">
-						<p class="product-category">{{$products->catalogues()->where('id', $products->getId())->get()}}</p>
+						<p class="product-category">{{$products->catalogues->getName()}}</p>
 							<h3 class="product-name"><a href="{{url('/product/showDetails/'. $products->getId())}}">{{$products->getName()}}</a></h3>
 
 							<h4 class="product-price">${{$products->getPrice()}} <del class="product-old-price">${{$products->getPrice() + 100}}</del></h4>
@@ -237,6 +237,7 @@
 
 				<!-- store products -->
 				<div class="row">
+					
 					@foreach($listOfProducts["all"] as $product)
 					<!-- product -->
 					<div class="col-md-4 col-xs-6">

@@ -11,13 +11,21 @@ use Illuminate\Support\Facades\Session;
 
 class ProductController extends Controller
 {
-    public function show($sort)
+    public function show($sort, $catalogue)
     {
         $listOfProducts = []; //to be sent to the view
         if ($sort == "lower_price") {
-            $listOfProducts["all"] =  Product::orderBy('price', 'ASC')->get(); //trae la busqueda en orden ascendente con orderBy
+            if ($catalogue != "all") {
+                $listOfProducts["all"] =  Product::orderBy('price', 'ASC')->where('catalogue_id', $catalogue)->get(); //trae la busqueda en orden ascendente con orderBy
+            } else {
+                $listOfProducts["all"] =  Product::orderBy('price', 'ASC')->get();
+            }
         } else {
-            $listOfProducts["all"] =  Product::orderBy('created_at', 'DESC')->get();
+            if ($catalogue != "all") {
+                $listOfProducts["all"] =  Product::orderBy('created_at', 'DESC')->where('catalogue_id', $catalogue)->get();
+            } else {
+                $listOfProducts["all"] =  Product::orderBy('created_at', 'DESC')->get();
+            }
         }
         $listOfProducts["top"] = Product::orderBy('price', 'DESC')->get()->take(2);
 

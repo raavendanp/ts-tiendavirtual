@@ -17,7 +17,7 @@ Route::get('/', 'HomeController@index')->name("pages.index");
 Route::get('/index', 'HomeController@index')->name("pages.index");
 Route::get('/contact', 'HomeController@contact')->name("pages.contact");
 //Products
-Route::get('/product/show/{sort}', 'ProductController@show')->name("product.showProducts");
+Route::get('/product/show/{sort}/{catalogue}', 'ProductController@show')->name("product.showProducts");
 Route::get('/product/showDetails/{id}/', 'ProductController@showDetails')->name("product.showDetails");
 Route::get('/catalogue/{catalogue_id}/createProduct', 'ProductController@create')->name("product.createProducts");
 Route::post('/product/save', 'CommentController@save')->name("comment.save");

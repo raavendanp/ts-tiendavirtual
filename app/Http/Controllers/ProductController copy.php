@@ -11,15 +11,17 @@ use Illuminate\Support\Facades\Session;
 
 class ProductController extends Controller
 {
-    public function show($sort)
+    public function show($sort,$catalogue)
     {
         $listOfProducts = []; //to be sent to the view
         if ($sort == "lower_price") {
             $listOfProducts["all"] =  Product::orderBy('price', 'ASC')->get(); //trae la busqueda en orden ascendente con orderBy
+            
         } else {
             $listOfProducts["all"] =  Product::orderBy('created_at', 'DESC')->get();
         }
         $listOfProducts["top"] = Product::orderBy('price', 'DESC')->get()->take(2);
+        $listOfProducts["alls"][1] = $listOfProducts["all"][0]->catalogues()->where('id', $catalogue)->get();
         
         return view('product.showProducts')->with("listOfProducts", $listOfProducts);
     }
