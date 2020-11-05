@@ -32,7 +32,7 @@
 
                     <li><a href= "{{ url('/product/create')}}" >New Product </a></li>
                     <li><a href= "{{ url('/product/show/last')}}" >Show Products </a></li>
-                    <li><a href= "{{ url('/contact')}}" >Contact</a></li>
+                    <li><a href= "{{ url('/contact')}}" >Contact Us</a></li>
 
                 </div>
             </div>

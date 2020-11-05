@@ -1,0 +1,10 @@
+Reglas de Programacion
+(i) Nunca haga un echo en un controlador. 
+(ii) Toda ruta debe estar asociada a un controlador. 
+(iii) Toda vista debe extender del layout master. 
+(iv) Todas las vistas deben ser Blade. 
+(v) Nunca abra y cierre php dentro de las vistas.
+(vi) No haga consultas sql dentro de las vistas.
+(vii) Los validate deben hacerse en el modelo y en las vistas, nunca en el controlador
+(viii) Haga buen uso de los get y set. Siemrpe deberan estar en los modelos
+(ix) Ejecute las relaciones en las migraciones y en los modelos de las clases.
