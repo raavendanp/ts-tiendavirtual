@@ -40,7 +40,7 @@
                             @endforeach
                         </ul>
                         @endif
-                        <form class ="text-center" method="POST" action="{{ route('product.save') }}">
+                        <form class ="text-center" method="POST" action="{{ route('product.save') }}" enctype="multipart/form-data">>
                             @csrf
                             <div class="center">
                                 <!-- Shipping Information -->
@@ -59,6 +59,11 @@
                                     </div>
                                     <div class="order-notes">
                                         <textarea class="input" placeholder="Product Details" name="details" value="{{ old('details') }}"></textarea>
+                                    </div>
+                                    <div>
+                                        <label>Image:</label>
+                                        <input type="file" name="product_image" />
+                                       
                                     </div>
                                     <input type='hidden' name='catalogue_id' value='{{$catalogueId}}' />
                                 </div>

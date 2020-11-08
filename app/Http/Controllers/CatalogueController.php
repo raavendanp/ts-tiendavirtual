@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Catalogue;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redis;
 
 class CatalogueController extends Controller
 {

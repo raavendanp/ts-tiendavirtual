@@ -26,6 +26,9 @@ Route::get('/product/save', 'HomeController@goindex');
 Route::delete('/product/delete', 'ProductController@delete')->name("product.delete");
 Route::get('/catalogue/{catalogue_id}/createProduct', 'ProductController@create')->name("product.createProducts");
 Route::get('/product/delete', 'HomeController@goindex');
+Route::get('/image/index', 'ImageController@index')->name("image.index");
+Route::post('/image/save', 'ImageController@save')->name("image.save");
+
 //Cart
 Route::post('/products/add-to-cart/{id}', 'CartController@addToCart')->name("cart.addToCart");
 Route::get('/cart/remove', 'CartController@removeCart')->name("cart.removeCart");
