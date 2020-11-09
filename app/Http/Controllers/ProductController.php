@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 //author: Ricardo Avendaño Peña
 use Illuminate\Http\Request;
 use App\Product;
-
+use App\Interfaces\ImageStorage;
 
 
 class ProductController extends Controller
@@ -48,13 +48,19 @@ class ProductController extends Controller
     public function save(Request $request)
     {
         Product::validate($request);
-        Product::create($request->only(["name", "price", "description", "details", "catalogue_id"]));
-
+        $product = Product::create($request->only(["name", "price", "description", "details", "catalogue_id"]));
+        $pid = $product->id;
+        $storeInterface = app(ImageStorage::class);
+        $storeInterface->store($request,$pid);
         return back()->with('success', 'Item created successfully!');
     }
     public function delete(Request $request)
     {
-        Product::destroy($request->only(["id"]));
+        $id = implode("|",$request->only(["id"]));
+        Product::destroy($id);
+        $storeInterface = app(ImageStorage::class);
+        $storeInterface->delete($id);
+
         return view('product.deletedProducts');
     }
 }

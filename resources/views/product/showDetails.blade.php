@@ -46,19 +46,19 @@
 			<div class="col-md-5 col-md-push-2">
 				<div id="product-main-img">
 					<div class="product-preview">
-						<img src="{{asset('bootstrap/img/product01.png')}}" alt="">
+						<img src="{{ URL::asset('storage/test'.$product->getId().'.png') }}" />
 					</div>
 
 					<div class="product-preview">
-						<img src="{{asset('bootstrap/img/product03.png')}}" alt="">
+						<img src="{{ URL::asset('storage/test'.$product->getId().'.png') }}" />
 					</div>
 
 					<div class="product-preview">
-						<img src="{{asset('bootstrap/img/product06.png')}}" alt="">
+						<img src="{{ URL::asset('storage/test'.$product->getId().'.png') }}" />
 					</div>
 
 					<div class="product-preview">
-						<img src="{{asset('bootstrap/img/product08.png')}}" alt="">
+						<img src="{{ URL::asset('storage/test'.$product->getId().'.png') }}" />
 					</div>
 				</div>
 			</div>
@@ -68,19 +68,19 @@
 			<div class="col-md-2  col-md-pull-5">
 				<div id="product-imgs">
 					<div class="product-preview">
-						<img src="{{asset('bootstrap/img/product01.png')}}" alt="">
+						<img src="{{ URL::asset('storage/test'.$product->getId().'.png') }}" />
 					</div>
 
 					<div class="product-preview">
-						<img src="{{asset('bootstrap/img/product03.png')}}" alt="">
+						<img src="{{ URL::asset('storage/test'.$product->getId().'.png') }}" />
 					</div>
 
 					<div class="product-preview">
-						<img src="{{asset('bootstrap/img/product06.png')}}" alt="">
+						<img src="{{ URL::asset('storage/test'.$product->getId().'.png') }}" />
 					</div>
 
 					<div class="product-preview">
-						<img src="{{asset('bootstrap/img/product08.png')}}" alt="">
+						<img src="{{ URL::asset('storage/test'.$product->getId().'.png') }}" />
 					</div>
 				</div>
 			</div>
@@ -339,7 +339,7 @@
 			<div class="col-md-3 col-xs-6">
 				<div class="product">
 					<div class="product-img">
-						<img src="{{asset('bootstrap/img/product01.png')}}" alt="">
+						<img src="{{ URL::asset('storage/test'.$product->getId().'.png') }}" />
 						<div class="product-label">
 							<span class="sale">-30%</span>
 						</div>
@@ -368,7 +368,7 @@
 			<div class="col-md-3 col-xs-6">
 				<div class="product">
 					<div class="product-img">
-						<img src="{{asset('bootstrap/img/product02.png')}}" alt="">
+						<img src="{{ URL::asset('storage/test'.$product->getId().'.png') }}" />
 						<div class="product-label">
 							<span class="new">NEW</span>
 						</div>
@@ -398,7 +398,7 @@
 			<div class="col-md-3 col-xs-6">
 				<div class="product">
 					<div class="product-img">
-						<img src="{{asset('bootstrap/img/product03.png')}}" alt="">
+						<img src="{{ URL::asset('storage/test'.$product->getId().'.png') }}" />
 					</div>
 					<div class="product-body">
 						<p class="product-category">Category</p>
@@ -423,7 +423,7 @@
 			<div class="col-md-3 col-xs-6">
 				<div class="product">
 					<div class="product-img">
-						<img src="{{asset('bootstrap/img/product04.png')}}" alt="">
+						<img src="{{ URL::asset('storage/test'.$product->getId().'.png') }}" />
 					</div>
 					<div class="product-body">
 						<p class="product-category">Category</p>
