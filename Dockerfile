@@ -11,14 +11,9 @@ RUN composer install \
     --no-plugins \
     --no-scripts \
     --prefer-dist
-RUN yum install mysql
-RUN mysql -h  database-1.csa3amrvfiz3.us-east-1.rds.amazonaws.com -P 3306 -u raavendanp -p
-RUN Eafit2017*
-RUN exit
+
 RUN cp .env.example .env
 RUN php artisan key:generate 
-RUN yes | php artisan migrate 
-RUN php artisan storage:link
 RUN chmod -R 777 storage
 RUN a2enmod rewrite
 RUN service apache2 restart
