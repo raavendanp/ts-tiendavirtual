@@ -61,7 +61,7 @@
                                         <textarea class="input" placeholder="Product Details" name="details" value="{{ old('details') }}"></textarea>
                                     </div>
                                     <div>
-                                        <label>Image:</label>
+                                        <label>Product Image:</label>
                                         <input type="file" name="product_image" />
                                        
                                     </div>
