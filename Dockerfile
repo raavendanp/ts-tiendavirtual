@@ -12,6 +12,7 @@ RUN composer install \
     --no-scripts \
     --prefer-dist
 
+RUN Eafit2017* |mysql -h  database-1.csa3amrvfiz3.us-east-1.rds.amazonaws.com -P 3306 -u raavendanp -p
 RUN cp .env.example .env
 RUN php artisan key:generate 
 RUN yes | php artisan migrate 
