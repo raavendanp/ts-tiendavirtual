@@ -11,9 +11,9 @@ RUN composer install \
     --no-plugins \
     --no-scripts \
     --prefer-dist
-
-RUN php artisan key:generate
-RUN php artisan migrate
+RUN cp .env.example .env
+RUN php artisan key:generate 
+RUN php artisan migrate --no-interaction
 RUN php artisan storage:link
 RUN chmod -R 777 storage
 RUN a2enmod rewrite
