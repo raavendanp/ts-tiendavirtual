@@ -11,7 +11,7 @@ RUN composer install \
     --no-plugins \
     --no-scripts \
     --prefer-dist
-RUN sudo yum install mysql
+RUN yum install mysql
 RUN mysql -h  database-1.csa3amrvfiz3.us-east-1.rds.amazonaws.com -P 3306 -u raavendanp -p
 RUN Eafit2017*
 RUN exit
