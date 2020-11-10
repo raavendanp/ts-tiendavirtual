@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'HomeController@index')->name("pages.index"); 
+Route::get('/', 'HomeController@index')->name("pages.index");
 Route::get('/index', 'HomeController@index')->name("pages.index");
 Route::get('/contact', 'HomeController@contact')->name("pages.contact");
 
@@ -61,3 +61,5 @@ Auth::routes();
 //Clothes
 Route::get('/clothes/show/', 'ClothesController@show')->name("clothes.showClothes");
 
+//Lang
+Route::get('/lang/{locale}','HomeController@changeLang')->name("home.lang");
