@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'HomeController@index')->name("pages.index");
+Route::get('/', 'HomeController@index')->name("pages.index"); 
 Route::get('/index', 'HomeController@index')->name("pages.index");
 Route::get('/contact', 'HomeController@contact')->name("pages.contact");
 
@@ -41,9 +41,15 @@ Route::post('/checkout/order', 'OrderController@save')->name("checkout.order.sav
 
 //Catalogue
 Route::get('/catalogue/showCatalogues', 'CatalogueController@show')->name("catalogue.showCatalogues");
+
 Route::get('/catalogue/showDetails/{id}', 'CatalogueController@showDetails')->name("catalogue.showCataloguesDetails");
 Route::get('/catalogue/create', 'CatalogueController@create')->name("catalogue.createCatalogues");
 Route::post('/catalogue/save', 'CatalogueController@save')->name("catalogue.save");
 Route::get('/catalogue/save', 'HomeController@goindex');
 Route::post('/catalogue/delete', 'CatalogueController@delete')->name("catalogue.delete");
 Route::get('/catalogue/delete', 'HomeController@goindex');
+
+//autenticación
+Route::get('/logout', 'Auth\LoginController@logout')->name("logout");
+Route::get('/home', 'HomeController@home')->name("home");
+Auth::routes();

@@ -2,21 +2,40 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+
 class HomeController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        //$this->middleware('auth');
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
     public function index()
     {
-        //Pagina principal
         return view('pages.index');
     }
     public function goindex()
     {
-        //Pagina principal
-        return redirect('/index');
+        return view('/index');
     }
     public function contact()
     {
-        //Pagina de contacto
         return view('pages.contact');
     }
+    public function home()
+    {
+        return view('/home');
+    }
+
 }
