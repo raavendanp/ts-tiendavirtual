@@ -18,6 +18,6 @@ class OrderController extends Controller
         Order::validate($request);
         Order::create($request->only(["payment_method", "shipping_id", "client_id", "cart_id"]));
         $request->session()->forget('products');
-        return redirect('/index');
+        return view('checkout.pay');
     }
 }

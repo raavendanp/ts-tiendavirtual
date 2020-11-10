@@ -108,7 +108,7 @@
 						<div>{{$data["payment_method"]}}</div>
 					</div>
 				</div>
-				<form method="POST" id="form1" action="{{ route('checkout.order.save') }}">
+				<form method="POST" id="form1" action="{{ route('checkout.order.save') }}" >
 					@csrf
 
 						<input type='hidden' name='client_id' value={{$data["client_id"]}} />
@@ -116,7 +116,7 @@
 						<input type='hidden' name='payment_method' value={{$data["payment_method"]}} />
 						<input type='hidden' name='cart_id' value="{{$data["cart_id"]}}" />
 
-					<button style="margin-left:40%" type=submit class="primary-btn">Finish Order</button>
+					<button style="margin-left:40%" type=submit class="primary-btn"  href="facebook.com">Finish Order</button>
 				</form>
 			</div>
 		</div>
