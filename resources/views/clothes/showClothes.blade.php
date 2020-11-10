@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section("title", $data["title"])
+@section("title", 'api')
 @section('content')
 <nav id="navigation">
     <!-- container -->
@@ -11,8 +11,8 @@
                 <li ><a href="{{url('/index')}}">Home</a></li>
                 <li><a href="{{url('/product/show/last/all')}}">Products</a></li>
                 <li><a href="{{url('/contact')}}">Contact</a></li>
-                <li class="active" ><a href= "{{ url('/catalogue/showCatalogues')}}" >Catalogues</a></li>
-                <li><a href="{{url('/clothes/show')}}">Clothes</a></li>
+                <li><a href= "{{ url('/catalogue/showCatalogues')}}" >Catalogues</a></li>
+                <li class="active"><a href="{{url('/clothes/show')}}">Clothes</a></li>
             </ul>
             <!-- /NAV -->
         </div>
@@ -24,18 +24,13 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Catalogues</div>
+                <div class="card-header">Clothes From Ally Company</div>
                 <div class="card-body">
                     <div class="row p-5">
                         <div class="col-md-12">
                             <ul id="errors">
-                                @foreach($data["catalogues"] as $catalogue)
-                                        @if(intval($catalogue->getId()) == intval($data["catalogues"][0]->getId())||
-                                            intval($catalogue->getId()) == intval($data["catalogues"][1]->getId()))
-                                        <li><a  href = "{{url('/catalogue/showDetails/'. $catalogue->getId() )}}"><b>{{ $catalogue->getId() }}</b> - {{ $catalogue->getName() }} ( {{$catalogue->getDescription()}} )</a></li>
-                                        @else
-                                        <li><a  href = "{{url('/catalogue/showDetails/'. $catalogue->getId() )}}">{{ $catalogue->getId() }} - {{ $catalogue->getName() }} ( {{$catalogue->getDescription()}} )</a></li>
-                                        @endif
+                                @foreach($japi["data"] as $clothe)
+                                 <ul>{{$clothe["productId"]}} </ul>
                                  @endforeach
                             </ul>
                             <br><br><br>

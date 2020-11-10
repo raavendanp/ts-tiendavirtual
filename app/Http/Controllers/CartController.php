@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Product;
 use App\Cart;
 use App\Item;
-use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Session;
 
 class CartController extends Controller

@@ -26,12 +26,17 @@ Route::get('/product/save', 'HomeController@goindex');
 Route::delete('/product/delete', 'ProductController@delete')->name("product.delete");
 Route::get('/catalogue/{catalogue_id}/createProduct', 'ProductController@create')->name("product.createProducts");
 Route::get('/product/delete', 'HomeController@goindex');
+Route::get('/image/index', 'ImageController@index')->name("image.index");
+Route::post('/image/save', 'ImageController@save')->name("image.save");
+
 //Cart
 Route::post('/products/add-to-cart/{id}', 'CartController@addToCart')->name("cart.addToCart");
 Route::get('/cart/remove', 'CartController@removeCart')->name("cart.removeCart");
 Route::get('/cart/carts', 'CartController@cart')->name("cart.cart");
 Route::post('/cart/buy', 'CartController@buy')->name("cart.buy");
-
+//Payment
+Route::get('/paypal/pay', 'PaymentController@payWithPayPal')->name("paypal.pay");;
+Route::get('/paypal/status', 'PaymentController@payPalStatus');
 //Checkout
 Route::get('/checkout/client', 'ClientController@show')->name("checkout.client");
 Route::post('/checkout/client', 'ClientController@save')->name("checkout.client.save");
@@ -53,3 +58,6 @@ Route::get('/catalogue/delete', 'HomeController@goindex');
 Route::get('/logout', 'Auth\LoginController@logout')->name("logout");
 Route::get('/home', 'HomeController@home')->name("home");
 Auth::routes();
+//Clothes
+Route::get('/clothes/show/', 'ClothesController@show')->name("clothes.showClothes");
+

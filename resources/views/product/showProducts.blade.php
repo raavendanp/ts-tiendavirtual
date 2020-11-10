@@ -12,6 +12,7 @@
 				<li class="active"> <a href="{{url('/product/show/last/all')}}">Products</a></li>
 				<li><a href="{{url('/contact')}}">Contact</a></li>
 				<li><a href="{{ url('/catalogue/showCatalogues')}}">Catalogues</a></li>
+				<li><a href="{{url('/clothes/show')}}">Clothes</a></li>
 			</ul>
 			<!-- /NAV -->
 		</div>
@@ -174,7 +175,7 @@
 
 					<div class="product-widget">
 						<div class="product-img">
-							<img src="{{asset('bootstrap/img/product01.png')}}" alt="">
+							<img src="{{ URL::asset('storage/test'.$products->getId().'.png') }}" />
 						</div>
 						<div class="product-body">
 							<p class="product-category">{{$products->catalogues->getName()}}</p>
@@ -219,7 +220,7 @@
 					<div class="col-md-4 col-xs-6">
 						<div class="product">
 							<div class="product-img">
-								<img src="{{asset('bootstrap/img/product01.png')}}" alt="">
+								<img src="{{ URL::asset('storage/test'.$product->getId().'.png') }}" />
 								<div class="product-label">
 
 									<span class="new">NEW</span>

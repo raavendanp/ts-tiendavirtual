@@ -14,6 +14,7 @@
                 <li><a href="{{url('/contact')}}">Contact</a></li>
                 <li><a href="{{ url('/catalogue/showCatalogues')}}">Catalogues</a></li>
                 <li class="active"><a href="#">Cart</a></li>
+                <li><a href="{{url('/clothes/show')}}">Clothes</a></li>
 
             </ul>
             <!-- /NAV -->

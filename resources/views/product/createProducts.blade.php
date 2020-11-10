@@ -13,6 +13,7 @@
                 <li class="active">  <a href="{{url('/product/show/last/all')}}">Products</a></li>
                 <li ><a href="{{url('/contact')}}">Contact</a></li>
                 <li><a href= "{{ url('/catalogue/showCatalogues')}}" >Catalogues</a></li>
+                <li><a href="{{url('/clothes/show')}}">Clothes</a></li>
             </ul>
             <!-- /NAV -->
         </div>
@@ -40,7 +41,7 @@
                             @endforeach
                         </ul>
                         @endif
-                        <form class ="text-center" method="POST" action="{{ route('product.save') }}">
+                        <form class ="text-center" method="POST" action="{{ route('product.save') }}" enctype="multipart/form-data">>
                             @csrf
                             <div class="center">
                                 <!-- Shipping Information -->
@@ -59,6 +60,11 @@
                                     </div>
                                     <div class="order-notes">
                                         <textarea class="input" placeholder="Product Details" name="details" value="{{ old('details') }}"></textarea>
+                                    </div>
+                                    <div>
+                                        <label>Product Image:</label>
+                                        <input type="file" name="product_image" />
+                                       
                                     </div>
                                     <input type='hidden' name='catalogue_id' value='{{$catalogueId}}' />
                                 </div>

@@ -1,5 +1,12 @@
 @extends('layouts.master')
 @section('content')
+<div class="p-5 md:p-16 lg:p-20">
+    @if (session('status'))
+    <h3 class="text-xl md:text-2xl">
+        {{session('status')}}
+    </h3>
+    @endif
+</div>
 <!-- NAVIGATION -->
 <nav id="navigation">
 	<!-- container -->
@@ -12,6 +19,7 @@
                 <li><a href="{{url('/product/show/last/all')}}">Products</a></li>
                 <li><a href="{{url('/contact')}}">Contact</a></li>
                 <li><a href= "{{ url('/catalogue/showCatalogues')}}" >Catalogues</a></li>
+                <li><a href="{{url('/clothes/show')}}">Clothes</a></li>
 
 
             </ul>

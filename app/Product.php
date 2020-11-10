@@ -70,7 +70,7 @@ class Product extends Model
         return $this->hasMany(Comment::class);
     }
     public function catalogues(){
-        return $this->belongsTo(Catalogue::class , 'catalogue_id');
+        return $this->belongsTo(Catalogue::class , 'catalogue_id', 'id');
     }
 
 }
