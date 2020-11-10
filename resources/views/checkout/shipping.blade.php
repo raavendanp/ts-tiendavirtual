@@ -13,7 +13,8 @@
                 <li><a href="{{url('/index')}}">Home</a></li>
                 <li><a href="{{url('/product/show/last/all')}}">Products</a></li>
                 <li><a href="{{url('/contact')}}">Contact</a></li>
-                <li><a href= "{{ url('/catalogue/showCatalogues')}}" >Catalogues</a></li>
+				<li><a href= "{{ url('/catalogue/showCatalogues')}}" >Catalogues</a></li>
+				<li><a href="{{url('/clothes/show')}}">Clothes</a></li>
 			</ul>
 			<!-- /NAV -->
 		</div>
