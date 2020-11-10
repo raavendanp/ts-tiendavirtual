@@ -37,6 +37,12 @@ return [
     "email"            => ":attribute no es un correo válido",
     "exists"           => ":attribute es inválido.",
     "filled"           => "El campo :attribute es obligatorio.",
+    'gt' => [
+        'numeric' => 'El :attribute debe ser mayor que :value.',
+        'file' => 'El :attribute debe ser mayor que  :value kilobytes.',
+        'string' => 'El :attribute debe ser mayor que  :value characters.',
+        'array' => 'El :attribute debe ser mayor que  :value items.',
+    ],
     "image"            => ":attribute debe ser una imagen.",
     "in"               => ":attribute es inválido.",
     "integer"          => ":attribute debe ser un número entero.",
@@ -105,7 +111,28 @@ return [
 
     'attributes' => [
         'name'=>'nombre',
-
+        'price'=> 'precio',
+        'description'=>'descripción',
+        'details'=>'detalles',
+        'first_name'=>'Primer_Nombre',
+        'last_name'=>'Apellido',
+        'telephone'=>'Telefono',
+        'quantity'=>'Cantidad',
+        'payment_method'=>'Metodo_de_Pago',
+        'shipping_id'=>'Id_Envio',
+        'client_id'=>'Id_cliente',
+        'cart_id'=>'Id_carrito',
+        'client'=>'Cliente',
+        'cart'=>'carrito',
+        'catalogue_id'=>'Id_catalogo',
+        'catalogue'=>'Catalogo',
+        'shipping_cost'=>'Costo_Envio',
+        'country'=>'Pais',
+        'city'=>'Ciudad',
+        'zip_code'=>'Codigo_Postal',
+        'adress'=>'Direccion',
+        'state'=>'estado',
+        'product_id'=>'Id_Producto',
     ],
 
 ];
