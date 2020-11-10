@@ -51,7 +51,7 @@ class ProductController extends Controller
         $product = Product::create($request->only(["name", "price", "description", "details", "catalogue_id"]));
         $pid = $product->id;
         $storeInterface = app(ImageStorage::class);
-        $storeInterface->store($request,$pid);
+        $storeInterface->stores3($request,$pid);
         return back()->with('success', 'Item created successfully!');
     }
     public function delete(Request $request)
@@ -59,7 +59,7 @@ class ProductController extends Controller
         $id = implode("|",$request->only(["id"]));
         Product::destroy($id);
         $storeInterface = app(ImageStorage::class);
-        $storeInterface->delete($id);
+        $storeInterface->deletes3($id);
 
         return view('product.deletedProducts');
     }
