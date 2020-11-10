@@ -61,8 +61,9 @@ return [
             'secret' => env('AWS_SECRET_ACCESS_KEY'),
             'region' => env('AWS_DEFAULT_REGION'),
             'bucket' => env('AWS_BUCKET'),
+            'token' => env('AWS_SESSION_TOKEN'),
             'url' => env('AWS_URL'),
-            'endpoint' => env('AWS_ENDPOINT'),
+            //'endpoint' => env('AWS_ENDPOINT'),
         ],
 
     ],

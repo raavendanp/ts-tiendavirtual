@@ -47,19 +47,19 @@
 			<div class="col-md-5 col-md-push-2">
 				<div id="product-main-img">
 					<div class="product-preview">
-						<img src="{{ URL::asset('storage/test'.$product->getId().'.png') }}" />
+						<img src="{!! url('https://elektrobucket.s3.amazonaws.com/test'.$product->getId().'.png') !!}" />
 					</div>
 
 					<div class="product-preview">
-						<img src="{{ URL::asset('storage/test'.$product->getId().'.png') }}" />
+						<img src="{!! url('https://elektrobucket.s3.amazonaws.com/test'.$product->getId().'.png') !!}" />
 					</div>
 
 					<div class="product-preview">
-						<img src="{{ URL::asset('storage/test'.$product->getId().'.png') }}" />
+						<img src="{!! url('https://elektrobucket.s3.amazonaws.com/test'.$product->getId().'.png') !!}" />
 					</div>
 
 					<div class="product-preview">
-						<img src="{{ URL::asset('storage/test'.$product->getId().'.png') }}" />
+						<img src="{!! url('https://elektrobucket.s3.amazonaws.com/test'.$product->getId().'.png') !!}" />
 					</div>
 				</div>
 			</div>
@@ -69,19 +69,19 @@
 			<div class="col-md-2  col-md-pull-5">
 				<div id="product-imgs">
 					<div class="product-preview">
-						<img src="{{ URL::asset('storage/test'.$product->getId().'.png') }}" />
+						<img src="{!! url('https://elektrobucket.s3.amazonaws.com/test'.$product->getId().'.png') !!}" />
 					</div>
 
 					<div class="product-preview">
-						<img src="{{ URL::asset('storage/test'.$product->getId().'.png') }}" />
+						<img src="{!! url('https://elektrobucket.s3.amazonaws.com/test'.$product->getId().'.png') !!}" />
 					</div>
 
 					<div class="product-preview">
-						<img src="{{ URL::asset('storage/test'.$product->getId().'.png') }}" />
+						<img src="{!! url('https://elektrobucket.s3.amazonaws.com/test'.$product->getId().'.png') !!}" />
 					</div>
 
 					<div class="product-preview">
-						<img src="{{ URL::asset('storage/test'.$product->getId().'.png') }}" />
+						<img src="{!! url('https://elektrobucket.s3.amazonaws.com/test'.$product->getId().'.png') !!}" />
 					</div>
 				</div>
 			</div>
@@ -340,7 +340,7 @@
 			<div class="col-md-3 col-xs-6">
 				<div class="product">
 					<div class="product-img">
-						<img src="{{ URL::asset('storage/test'.$product->getId().'.png') }}" />
+						<img src="{!! url('https://elektrobucket.s3.amazonaws.com/test'.$product->getId().'.png') !!}" />
 						<div class="product-label">
 							<span class="sale">-30%</span>
 						</div>
@@ -369,7 +369,7 @@
 			<div class="col-md-3 col-xs-6">
 				<div class="product">
 					<div class="product-img">
-						<img src="{{ URL::asset('storage/test'.$product->getId().'.png') }}" />
+						<img src="{!! url('https://elektrobucket.s3.amazonaws.com/test'.$product->getId().'.png') !!}" />
 						<div class="product-label">
 							<span class="new">NEW</span>
 						</div>
@@ -399,7 +399,7 @@
 			<div class="col-md-3 col-xs-6">
 				<div class="product">
 					<div class="product-img">
-						<img src="{{ URL::asset('storage/test'.$product->getId().'.png') }}" />
+						<img src="{!! url('https://elektrobucket.s3.amazonaws.com/test'.$product->getId().'.png') !!}" />
 					</div>
 					<div class="product-body">
 						<p class="product-category">Category</p>
@@ -424,7 +424,7 @@
 			<div class="col-md-3 col-xs-6">
 				<div class="product">
 					<div class="product-img">
-						<img src="{{ URL::asset('storage/test'.$product->getId().'.png') }}" />
+						<img src="{!! url('https://elektrobucket.s3.amazonaws.com/test'.$product->getId().'.png') !!}" />
 					</div>
 					<div class="product-body">
 						<p class="product-category">Category</p>

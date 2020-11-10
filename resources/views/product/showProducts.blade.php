@@ -175,7 +175,8 @@
 
 					<div class="product-widget">
 						<div class="product-img">
-							<img src="{{ URL::asset('storage/test'.$products->getId().'.png') }}" />
+							<img src="{!! url('https://elektrobucket.s3.amazonaws.com/test'.$products->getId().'.png') !!}" />
+							
 						</div>
 						<div class="product-body">
 							<p class="product-category">{{$products->catalogues->getName()}}</p>
@@ -220,7 +221,7 @@
 					<div class="col-md-4 col-xs-6">
 						<div class="product">
 							<div class="product-img">
-								<img src="{{ URL::asset('storage/test'.$product->getId().'.png') }}" />
+								<img src="{!! url('https://elektrobucket.s3.amazonaws.com/test'.$product->getId().'.png') !!}" />
 								<div class="product-label">
 
 									<span class="new">NEW</span>
