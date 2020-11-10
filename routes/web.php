@@ -34,7 +34,9 @@ Route::post('/products/add-to-cart/{id}', 'CartController@addToCart')->name("car
 Route::get('/cart/remove', 'CartController@removeCart')->name("cart.removeCart");
 Route::get('/cart/carts', 'CartController@cart')->name("cart.cart");
 Route::post('/cart/buy', 'CartController@buy')->name("cart.buy");
-
+//Payment
+Route::get('/paypal/pay', 'PaymentController@payWithPayPal')->name("paypal.pay");;
+Route::get('/paypal/status', 'PaymentController@payPalStatus');
 //Checkout
 Route::get('/checkout/client', 'ClientController@show')->name("checkout.client");
 Route::post('/checkout/client', 'ClientController@save')->name("checkout.client.save");

@@ -1,5 +1,12 @@
 @extends('layouts.master')
 @section('content')
+<div class="p-5 md:p-16 lg:p-20">
+    @if (session('status'))
+    <h3 class="text-xl md:text-2xl">
+        {{session('status')}}
+    </h3>
+    @endif
+</div>
 <!-- NAVIGATION -->
 <nav id="navigation">
 	<!-- container -->
