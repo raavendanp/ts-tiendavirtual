@@ -52,3 +52,7 @@ Route::post('/catalogue/save', 'CatalogueController@save')->name("catalogue.save
 Route::get('/catalogue/save', 'HomeController@goindex');
 Route::post('/catalogue/delete', 'CatalogueController@delete')->name("catalogue.delete");
 Route::get('/catalogue/delete', 'HomeController@goindex');
+
+//Clothes
+Route::get('/clothes/show/', 'ClothesController@show')->name("clothes.showClothes");
+
