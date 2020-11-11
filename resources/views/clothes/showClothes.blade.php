@@ -29,14 +29,14 @@
                         <div class="col-md-12">
                             <ul id="errors">
                                 @foreach($japi["data"] as $clothe)
-                                 <ul>{{$clothe["productId"]}} </ul>
+                            <ul>{{$clothe["id"]}} . {{$clothe["category"]}} - Gender: {{$clothe["gender"]}}</ul>
                                  @endforeach
                             </ul>
                             <br><br><br>
                             <div class="text-center">
 
-                                <a class="btn btn-primary" href="{{url('/index')}}">Back</a>
-                                <a class="btn btn-primary" href="{{url('/catalogue/create')}}">Create Catalogue (Admin)</a>
+                                <a class="btn btn-primary" href="{{url('http://helize.tk/public/')}}">Store</a>
+                                
                             </div>
                         </div>
                     </div>
