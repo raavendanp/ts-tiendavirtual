@@ -45,7 +45,6 @@ class PaymentController extends Controller
 
         $transaction = new Transaction();
         $transaction->setAmount($amount);
-        // $transaction->setDescription('See your IQ results');
 
         $callbackUrl = url('/paypal/status');
 
