@@ -24,21 +24,16 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('pages.index');
+        return redirect('/product/show/all/last');
     }
     public function goindex()
     {
-        return view('/index');
+        return redirect('/product/show/all/last');
     }
     public function contact()
     {
         return view('pages.contact');
     }
-    public function home()
-    {
-        return view('/home');
-    }
-
     public function changeLang($locale)
     {
         Session::put('applocale',$locale);
