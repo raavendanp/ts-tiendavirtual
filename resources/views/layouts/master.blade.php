@@ -69,10 +69,10 @@
                             @endif
 
                             <li class="nav-item">
-                            <a class="nav-link" href="/lang/es">Es</a>
+                            <a class="nav-link" href="/public/lang/es">Es</a>
                             </li>
                             <li class="nav-item">
-                            <a class="nav-link" href="/lang/en">En</a>
+                            <a class="nav-link" href="/public/lang/en">En</a>
                             </li>
 
                         @else
