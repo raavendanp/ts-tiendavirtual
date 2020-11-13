@@ -51,7 +51,7 @@
 					<ul class="header-links pull-right">
 						<!--<li><a href="/login"><i class="fa fa-dollar"></i> Login</a></li>
 						<li><a href="/register"><i class="fa fa-user-o"></i> register</a></li>
-						<li><a href="/logout"><i class="fa fa-user-o"></i> cerrar seccion</a></li>
+						<li><a href="/public/logout"><i class="fa fa-user-o"></i> cerrar seccion</a></li>
 						<ul class="navbar-nav ml-auto">
                          Authentication Links -->
                         @guest
